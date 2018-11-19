@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :messages
   has_many :prestations
   has_many :projects
+  has_many :reviews
 end

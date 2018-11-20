@@ -1,0 +1,6 @@
+<h1>Tous nos artisans</h1>
+
+<% @artisans.each do |artisan| %>
+<p><%= artisan.first_name %><%= artisan.last_name %></p>
+<p><%= artisan.specialty %></p>
+<% end  %>

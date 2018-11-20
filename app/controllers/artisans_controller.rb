@@ -1,6 +1,10 @@
 class ArtisansController < ApplicationController
   def index
-    @artisans = User.where(artisan: true)
+    if params[:query].present?
+      @artisans = User.search_by_specialty(params[:query])
+    else
+      @artisans = User.where(artisan: true)
+    end
   end
 
   def show

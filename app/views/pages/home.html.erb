@@ -6,7 +6,13 @@
 
 <!--   search -->
   <div class="row" style="text-align: center">
-    Search
+    <%= form_tag artisans_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Trouve ton artisan"
+      %>
+    <% end %>
   </div>
 
 <!-- categories links -->

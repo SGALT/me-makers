@@ -1,0 +1,20 @@
+<div class="container">
+    <% @prestations.each do |prestation| %>
+      <p>Prestation <%= prestation.id %></p>
+      <ul>
+        <li>
+          <%= prestation.title %>
+        </li>
+        <li>
+          <%= prestation.description %>
+        </li>
+        <li>
+          <%= prestation.user.first_name %> <%= prestation.user.last_name %>
+        </li>
+        <p>
+          <%= link_to "show", prestation_path(prestation) %>
+        </p>
+      </ul>
+    <% end %>
+</div>
+

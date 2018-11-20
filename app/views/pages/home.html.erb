@@ -1,10 +1,129 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background: url(<%= image_path "home" %>); background-size: 100%; background-repeat: no-repeat;">
+</div>
 
-<%= form_tag artisans_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Trouve ton artisan"
-  %>
-<% end %>
+
+<div class="container">
+
+<!--   search -->
+  <div class="row" style="text-align: center">
+    <%= form_tag artisans_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Trouve ton artisan"
+      %>
+    <% end %>
+  </div>
+
+<!-- categories links -->
+  <div class="row">
+    <div class="col-xs-6" style="text-align: left">
+      Category
+    </div>
+    <div class="col-xs-6" style="text-align: right; color: #F5A623">
+      See all
+    </div>
+  </div>
+
+
+ <!--  categories icons-->
+  <div class="row categories">
+    <div class="col-xs-4 icon-categories">
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/160005-200.png" style="width: 48px; height: 48px;">
+        Kitchen
+    </div>
+    <div class="col-xs-4 icon-categories">
+      <img src="https://static.thenounproject.com/png/928263-200.png" style="width: 48px; height: 48px">
+      Living room
+    </div>
+    <div class="col-xs-4 icon-categories">
+      <img src="https://static.thenounproject.com/png/962892-200.png" style="width: 48px; height: 48px">
+      Bedroom
+    </div>
+  </div>
+  <div class="row categories">
+    <div class="col-xs-4 icon-categories">
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/160005-200.png" style="width: 48px; height: 48px">
+        Kitchen
+    </div>
+    <div class="col-xs-4 icon-categories">
+      <img src="https://static.thenounproject.com/png/928263-200.png" style="width: 48px; height: 48px">
+      Living room
+    </div>
+    <div class="col-xs-4 icon-categories">
+      <img src="https://static.thenounproject.com/png/962892-200.png" style="width: 48px; height: 48px">
+      Bedroom
+    </div>
+  </div>
+
+
+  <!-- Carousel -->
+  <div class="row" style="text-align: center">
+  Caroussel
+  </div>
+
+  <!-- mini cartes -->
+    <div class="row categories">
+      <div class="col-xs-6">
+        <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
+      </div>
+      <div class="col-xs-6">
+        <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
+      </div>
+    </div>
+
+      <div class="row categories">
+        <div class="col-xs-6">
+          <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
+        </div>
+        <div class="col-xs-6">
+          <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
+        </div>
+      </div>
+
+
+ <!--  carte large -->
+  <div class="row card-artisan">
+    <div class="col-xs-2">
+      <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+    </div>
+    <div class="col-xs-6">
+      <p style="font-size: 18px; padding-left: 20px">Company</p>
+      <p style="font-size: 14px; padding-left: 20px">Specialty</p>
+    </div>
+    <div class="col-xs-4" style="text-align: center">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </div>
+    <div class="col-xs-12">
+      <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
+    </div>
+  </div>
+
+    <div class="row card-artisan">
+    <div class="col-xs-2">
+      <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+    </div>
+    <div class="col-xs-6">
+      <p style="font-size: 18px; padding-left: 20px">Company</p>
+      <p style="font-size: 14px; padding-left: 20px">Specialty</p>
+    </div>
+    <div class="col-xs-4" style="text-align: center">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </div>
+    <div class="col-xs-12">
+      <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -14,7 +14,7 @@ class PrestationsController < ApplicationController
 
   private
 
-  def project_params
+  def prestation_params
     params.require(:prestation).permit(:title, :description, :workforce, :materials, :price)
   end
 

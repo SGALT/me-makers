@@ -6,6 +6,7 @@
 
 <!--   search -->
   <div class="row" style="text-align: center">
+    <div class="search-home">
     <%= form_tag artisans_path, method: :get do %>
       <%= text_field_tag :query,
       params[:query],
@@ -13,6 +14,7 @@
       placeholder: "Trouve ton artisan"
       %>
     <% end %>
+    </div>
   </div>
 
 <!-- categories links -->
@@ -59,7 +61,7 @@
 
   <!-- Carousel -->
   <div class="row" style="text-align: center">
-  Caroussel
+    Caroussel
   </div>
 
   <!-- mini cartes -->

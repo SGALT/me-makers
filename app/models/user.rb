@@ -7,4 +7,11 @@ class User < ApplicationRecord
   has_many :prestations
   has_many :projects
   has_many :reviews
+
+  include PgSearch
+  pg_search_scope :search_by_specialty,
+    against: [ :specialty],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

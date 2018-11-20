@@ -1,2 +1,2 @@
-class Artisans::PrestationsController < ApplicationController
+class PrestationsController < ApplicationController
 end

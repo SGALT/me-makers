@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-  namespace :artisans do
+  namespace :me_artisans do
     resources :prestations, only: [:index, :edit, :update]
   end
 end

@@ -1,0 +1,16 @@
+<div class="container">
+  <% @prestations.each do |prestation| %>
+    <ul>
+      <li>
+        <%= prestation.title %>
+      </li>
+      <li>
+        <%= prestation.description %>
+      </li>
+      <li>
+        <%= prestation.user.first_name %> <%= prestation.user.last_name %>
+      </li>
+    </ul>
+  <% end %>
+</div>
+

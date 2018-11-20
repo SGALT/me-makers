@@ -1,6 +1,38 @@
 <div class="container">
-<h1>Tous nos artisans</h1>
-  <div class="row">
+  <h1>Tous nos artisans</h1>
+
+  <div>
+    <div class="row">
+      <% @artisans.each do |artisan| %>
+      <%= link_to artisan_path(artisan.id) do %>
+      <div class="col-xs-2">
+        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+      </div>
+      <div class="col-xs-6">
+        <p style="font-size: 18px; padding-left: 20px"><%= artisan.specialty %></p>
+        <p style="font-size: 14px; padding-left: 20px"><%= artisan.first_name %><%= artisan.last_name %></p>
+      </div>
+      <div class="col-xs-4" style="text-align: center">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="col-xs-12">
+        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card" style="margin-bottom: 60px">
+      </div>
+    <% end %>
+    <% end  %>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!--   <div class="row">
     <% @artisans.each do |artisan| %>
       <%= link_to artisan_path(artisan.id) do %>
         <div class="col-xs-12">
@@ -15,5 +47,5 @@
         </div>
       <% end %>
     <% end  %>
-  </div>
-</div>
+  </div> -->
+

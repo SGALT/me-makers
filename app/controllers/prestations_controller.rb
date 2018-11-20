@@ -1,5 +1,5 @@
 class PrestationsController < ApplicationController
-  before_action :set_prestation, only: [:show]
+  before_action :set_prestation, only: %i[show]
 
   def show
   end

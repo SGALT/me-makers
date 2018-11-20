@@ -1,0 +1,11 @@
+<div class="container">
+  <%= simple_form_for @prestation do |f| %>
+    <%= @prestation.errors.full_messages.join(', ') %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :workforce %>
+    <%= f.input :material %>
+    <%= f.input :price %>
+    <p><%= f.button :submit, class: 'btn btn-danger'%>  <%= link_to "Accueil", root_path, class: 'btn btn-light' %></p>
+  <% end %>
+</div>

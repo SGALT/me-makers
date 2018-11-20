@@ -7,3 +7,6 @@
   </p>
   <%= link_to "back to index", me_artisans_prestations_path %>
 </div>
+<% if current_user.artisan %>
+  <%= link_to "edit prestation", edit_me_artisans_prestations_path %>
+<% end %>

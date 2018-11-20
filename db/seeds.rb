@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 specialty = ["plombier", "carreleur", "menuisier", "ébeniste", "chauffagiste", "electricien", "maçon", "jardinier", "paysagiste", "tapissier", "peintre"]
+title = ["Salle de bain", "jardin", "carrelage", "cloison", "peinture", "parquet"]
 
 puts 'Cleaning database...'
+Prestation.destroy_all
+Project.destroy_all
 User.destroy_all
 
 
@@ -49,5 +52,28 @@ puts 'creating artisans'
   )
   user.save!
 end
+
+puts "project creation"
+20.times do
+  project = Project.new(
+    title: title.sample,
+    description: Faker::ChuckNorris.fact,
+    date: Date.today + (1..45).to_a.sample,
+    user: User.all.sample,
+    photo: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330"
+    )
+  project.save!
+  2.times do
+    prestation = Prestation.new(
+      title: project.title,
+      description: project.description,
+      project_id: project.id,
+      user_id: project.user.id,
+      state: "pending"
+      )
+  prestation.save!
+  end
+end
+
 
 puts 'Finished!'

@@ -11,6 +11,7 @@ gem 'redis'
 gem 'faker'
 
 gem 'pg_search'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 

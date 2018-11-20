@@ -1,5 +1,5 @@
 class MeArtisans::PrestationsController < ApplicationController
-  before_action :set_prestation
+  before_action :set_prestation, only: [:edit]
 
   def index
     @prestations = Prestation.all

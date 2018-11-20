@@ -1,0 +1,19 @@
+<div class="container">
+<h1>Tous nos artisans</h1>
+  <div class="row">
+    <% @artisans.each do |artisan| %>
+      <%= link_to artisan_path(artisan.id) do %>
+        <div class="col-xs-12">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+              <h2><%= artisan.first_name %><%= artisan.last_name %></h2>
+              <h3><%= artisan.specialty %></h3>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          </div>
+        </div>
+      <% end %>
+    <% end  %>
+  </div>
+</div>

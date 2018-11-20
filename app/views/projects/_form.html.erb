@@ -1,0 +1,11 @@
+<div>
+<h1>Créez votre Projet</h1>
+  <%= simple_form_for @project do |f| %>
+    <%= @project.errors.full_messages.join(', ') %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.input :photo %>
+    <p><%= f.button :submit, class: 'btn btn-danger'%>  <%= link_to "Accueil", root_path, class: 'btn btn-light' %></p>
+  <% end %>
+</div>

@@ -14,7 +14,7 @@
     placeholder: "Trouve ton artisan"
     %>
     <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
-  <% end %>
+    <% end %>
   </div>
 
  <!--  profil -->
@@ -62,13 +62,17 @@
             <p class="card-text"><%= prestation.user.first_name %> <%= prestation.user.last_name %></p>
             <i class="fas fa-trash float-right"></i>
             <i class="fas fa-edit float-right" style="margin-right: 10px"></i>
-            <i class="fas fa-thumbs-up float-right" style="margin-right: 10px; color: white"></i>
-            <i class="fas fa-times float-right" style="margin-right: 10px; color: white"></i>
+            <%= link_to accept_prestation_path(prestation), method: :post, remote: true do %>
+              <i class="fas fa-thumbs-up float-right" style="margin-right: 10px; color: white"></i>
+            <% end %>
+            <%= link_to(decline_prestation_path(prestation), method: :post) do %>
+              <i class="fas fa-times float-right" style="margin-right: 10px; color: white"></i>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-    <% end %>
+  <% end %>
 
 <!--  boutons -->
   <%= link_to "Retour", projects_path, class: 'btn btn-light' %>

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :projects
 
   resources :prestations, only: [:show, :update] do
+    member do
+      post "accept"
+      post "decline"
+    end
     resources :messages, only: [:create]
   end
 

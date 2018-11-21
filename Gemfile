@@ -12,7 +12,8 @@ gem 'faker'
 
 gem 'pg_search'
 gem 'geocoder'
-
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 gem 'autoprefixer-rails'
 
 gem 'font-awesome-sass', '~> 5.0.9'

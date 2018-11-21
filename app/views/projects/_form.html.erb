@@ -1,11 +1,17 @@
 <div>
-<h1>Créez votre Projet</h1>
   <%= simple_form_for @project do |f| %>
     <%= @project.errors.full_messages.join(', ') %>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :date %>
-    <%= f.input :photo %>
-    <p><%= f.button :submit, class: 'btn btn-danger'%>  <%= link_to "Accueil", root_path, class: 'btn btn-light' %></p>
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Choisissez votre Photo</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+    </form>
+
+    <p><%= link_to "Créez", projects_path, class: 'btn btn-light' %>
+    <%= link_to "Accueil", root_path, class: 'btn btn-light' %></p>
   <% end %>
 </div>

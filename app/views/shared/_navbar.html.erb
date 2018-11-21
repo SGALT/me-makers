@@ -6,34 +6,36 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      <!-- Artisan -->
+      <% if current_user.artisan %>
+        <li class="nav-item">
+          <%= link_to "Mon profil", root_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mon tableau de bord", me_artisans_prestations_path, class:"nav-link" %>
+        </li>
+      <!-- User -->
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Mon profil", root_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mes projets", projects_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Créer mon projet", new_project_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item" style="margin-top: 8px">
+          <%= form_tag artisans_path, method: :get do %>
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Trouve ton artisan"
+            %>
+            <%= submit_tag "Rechercher", class:"btn btn-outline-secondary my-2 my-sm-0 btn-block" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
-    <%= form_tag artisans_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Trouve ton artisan"
-      %>
-      <%= submit_tag "Rechercher", class:"btn btn-outline-secondary my-2 my-sm-0 btn-block" %>
-    <% end %>
   </div>
 </nav>

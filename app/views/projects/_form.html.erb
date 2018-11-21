@@ -4,13 +4,8 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :date %>
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Choisissez votre Photo</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-      </div>
-    </form>
-
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <p><%= link_to "Créez", projects_path, class: 'btn btn-light' %>
     <%= link_to "Accueil", root_path, class: 'btn btn-light' %></p>
   <% end %>

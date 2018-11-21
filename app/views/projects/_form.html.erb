@@ -3,7 +3,11 @@
     <%= @project.errors.full_messages.join(', ') %>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :date %>
+
+    <%= simple_form_for :search, method: "get" do |f| %>
+    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+    <% end %>
+
     <form>
       <div class="form-group">
         <label for="exampleFormControlFile1">Choisissez votre Photo</label>

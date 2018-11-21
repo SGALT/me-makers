@@ -69,7 +69,7 @@ puts "project creation"
       description: project.description,
       project_id: project.id,
       user_id: project.user.id,
-      state: "pending"
+      state: 0
       )
   prestation.save!
   end

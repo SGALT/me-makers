@@ -5,17 +5,16 @@
 <div class="container">
 
 <!--   search -->
-  <div class="row" style="text-align: center">
-    <div class="search-home">
-    <%= form_tag artisans_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Trouve ton artisan"
-      %>
-    <% end %>
-    </div>
-  </div>
+<div class="search-home">
+<%= form_tag artisans_path, method: :get do %>
+  <%= text_field_tag :query,
+  params[:query],
+  class: "form-control",
+  placeholder: "Trouve ton artisan"
+  %>
+  <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
+<% end %>
+</div>
 
 <!-- categories links -->
   <div class="row">

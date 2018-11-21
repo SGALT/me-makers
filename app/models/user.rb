@@ -16,4 +16,6 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  mount_uploader :photo, PhotoUploader
 end

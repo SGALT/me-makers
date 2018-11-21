@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @prestations = Prestation.where(project_id: @project)
   end
 
   def new

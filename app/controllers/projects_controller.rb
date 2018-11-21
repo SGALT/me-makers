@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @prestations = Prestation.where(project_id: @project)
   end
 
   def new
@@ -37,7 +38,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :date)
+    params.require(:project).permit(:title, :description, :date, :photo, :photo_cache)
   end
 
   def set_project

@@ -1,4 +1,77 @@
-<h1>PROJECT SHOW</h1>
-<%= link_to "Retour", projects_path, class: 'btn btn-light' %>
-<%= link_to "Devis", prestation_path, class: 'btn btn-light' %>
-<%= link_to "Messages", prestation_path, class: 'btn btn-light' %>
+<div class="container">
+
+  <h1 style="text-align: center; margin-top: 20px">Mon projet</h1>
+
+<!-- image -->
+  <img src="https://images.pexels.com/photos/204725/pexels-photo-204725.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+
+<!-- search -->
+  <div class="search-home" style="margin-top: 20px">
+  <%= form_tag artisans_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Trouve ton artisan"
+    %>
+    <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
+  <% end %>
+  </div>
+
+ <!--  profil -->
+
+ <div class="card border-white" style="margin-bottom: 50px">
+  <div class="card-body" style="color: #545d7e; text-shadow:none">
+      <div class="float-left" style="margin-right: 10px">
+        <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+      </div>
+      <div style="margin-left: 10px">
+        <h5 class="card-title">Card title</h5>
+      <div>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+      </div>
+        <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
+        <i class="fas fa-share float-right" style="margin-right: 10px"></i>
+        <i class="fas fa-trash float-right" style="margin-right: 10px"></i>
+          <i class="fas fa-edit float-right" style="margin-right: 10px"></i>
+      </div>
+  </div>
+</div>
+
+<!-- devis -->
+  <% @prestations.each do |prestation| %>
+    <div class="card" style="margin-bottom: 30px; background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%)">
+      <div class="card-body" style="color: #545d7e; text-shadow:none">
+        <div class="row">
+          <div class="col-4">
+            <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded float-left" style="height: 100px; width: 100px">
+          </div>
+          <div class="col-8">
+            <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
+              <p>
+              <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Show description
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body"><%= prestation.description %></div>
+            </div>
+            <p class="card-text"><%= prestation.user.first_name %> <%= prestation.user.last_name %></p>
+            <i class="fas fa-trash float-right"></i>
+            <i class="fas fa-edit float-right" style="margin-right: 10px"></i>
+            <i class="fas fa-thumbs-up float-right" style="margin-right: 10px; color: white"></i>
+            <i class="fas fa-times float-right" style="margin-right: 10px; color: white"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+<!--  boutons -->
+  <%= link_to "Retour", projects_path, class: 'btn btn-light' %>
+  <%= link_to "Devis", prestation_path, class: 'btn btn-light' %>
+  <%= link_to "Messages", prestation_path, class: 'btn btn-light' %>
+</div>

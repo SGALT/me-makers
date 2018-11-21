@@ -2,7 +2,7 @@ class MeArtisans::PrestationsController < ApplicationController
   before_action :set_prestation, only: [:edit]
 
   def index
-    @prestations = Prestation.all
+    @prestations = Prestation.where(artisan: current_user)
   end
 
   def edit

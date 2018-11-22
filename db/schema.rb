@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_102251) do
+ActiveRecord::Schema.define(version: 2018_11_21_173334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_11_21_102251) do
     t.string "workforce"
     t.string "material"
     t.bigint "project_id"
-    t.bigint "user_id"
+    t.bigint "artisan_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "state"
+    t.index ["artisan_id"], name: "index_prestations_on_artisan_id"
     t.index ["project_id"], name: "index_prestations_on_project_id"
-    t.index ["user_id"], name: "index_prestations_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_102251) do
 
   add_foreign_key "messages", "users"
   add_foreign_key "prestations", "projects"
-  add_foreign_key "prestations", "users"
+  add_foreign_key "prestations", "users", column: "artisan_id"
   add_foreign_key "projects", "users"
   add_foreign_key "reviews", "projects"
   add_foreign_key "reviews", "users"

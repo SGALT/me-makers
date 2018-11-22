@@ -1,31 +1,31 @@
 <div class="container">
 
-    <h1 class="top-title">Tous mes devis</h1>
+  <h1 class="top-title">Tous mes devis</h1>
 
   <div style="text-align: center; margin-bottom: 30px">
       <img src="https://www.edx.org/sites/default/files/course/image/featured-card/business-immersion-illustration_318x210.jpg">
   </div>
 
-  <% @prestations.each do |prestation| %>
-  <div class="card" style="margin-bottom: 30px">
-    <div class="card-body" style="color: #545d7e; text-shadow:none">
-      <div class="row">
-        <div class="col-4">
-          <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded float-left" style="height: 100px; width: 100px">
-        </div>
-        <div class="col-8">
-          <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
-            <p>
-            <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              Show description
-            </a>
-          </p>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body"><%= prestation.description %></div>
-          </div>
+    <% @prestations.each do |prestation| %>
+
+      <div class="card" style="margin-bottom: 30px">
+        <div class="card-body" style="color: #545d7e; text-shadow:none">
+          <div class="row">
+            <div class="col-4">
+              <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded float-left" style="height: 100px; width: 100px">
+            </div>
+            <div class="col-8">
+              <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
+                <p><a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Show description</a></p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body"><%= prestation.description %></div>
+              </div>
+             </div>
+            </div>
         </div>
       </div>
     <% end %>
+
 </div>
 
 

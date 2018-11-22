@@ -13,7 +13,7 @@
         </li>
       <% elsif current_user.artisan %>
         <li class="nav-item">
-          <%= link_to "Mon profil", root_path, class:"nav-link" %>
+          <%= link_to "Mon profil", edit_user_registration_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Mon tableau de bord", me_artisans_prestations_path, class:"nav-link" %>

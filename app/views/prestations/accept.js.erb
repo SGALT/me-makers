@@ -1,0 +1,8 @@
+const thumb = document.getElementById('thumb-<%= @prestation.id %>');
+const cross = document.querySelectorAll('.fa-times');
+const crossThumb = document.getElementById('cross-<%= @prestation.id %>');
+thumb.classList.add('booked');
+cross.forEach(function(element) {
+  element.classList.add('declined');
+});
+crossThumb.classList.remove('declined');

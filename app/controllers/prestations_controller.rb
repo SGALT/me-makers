@@ -6,6 +6,9 @@ class PrestationsController < ApplicationController
 
   def create
     @prestation = Prestation.new(presta_params)
+    @prestation.title = @prestation.project.title
+    @prestation.description = @prestation.project.description
+    @prestation.save
     redirect_to project_path(params[:project_id])
   end
 
@@ -14,8 +17,6 @@ class PrestationsController < ApplicationController
   def set_prestation
     @prestation = Prestation.find(params[:id])
   end
-
-private
 
   def presta_params
     params.permit(:project_id, :artisan_id)

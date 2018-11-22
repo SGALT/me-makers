@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.where(user_id: current_user)
   end
 
   def show
@@ -15,10 +15,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
     if @project.save
       redirect_to projects_path(@project)
     else
-      render "projects/show"
+      render :new
     end
   end
 

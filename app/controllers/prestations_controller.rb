@@ -19,6 +19,7 @@ class PrestationsController < ApplicationController
     respond_to do |format|
       format.js # decline.js.erb
     end
+  end
 
   def create
     @prestation = Prestation.new(presta_params)
@@ -26,7 +27,6 @@ class PrestationsController < ApplicationController
     @prestation.description = @prestation.project.description
     @prestation.save
     redirect_to project_path(params[:project_id])
-
   end
 
   private

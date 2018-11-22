@@ -40,4 +40,23 @@ height: 48px;
   margin-bottom: 60px
 }
 
+.carousel-text {
+  text-align: center;
+  color: #F5A623;
+  font-weight: bold;
+  padding-top: 20px;
+  font-size: 20px
+}
+
+.caption {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 4px 0 0 #F5A623;
+}
+
 

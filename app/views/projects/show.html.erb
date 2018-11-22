@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="top-title">Mon projet</h1>
+  <h1 class="top-title"><%= @project.title %></h1>
 
 <!-- image -->
   <img src="https://images.pexels.com/photos/204725/pexels-photo-204725.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid rounded" alt="Responsive image">
@@ -14,7 +14,7 @@
     placeholder: "Trouve ton artisan"
     %>
     <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
-  <% end %>
+    <% end %>
   </div>
 
  <!--  profil -->
@@ -49,7 +49,7 @@
           <div class="col-4">
             <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded float-left" style="height: 100px; width: 100px">
           </div>
-          <div class="col-8">
+          <div class="col-8 prestation-card">
             <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
               <p>
               <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -60,10 +60,24 @@
               <div class="card card-body"><%= prestation.description %></div>
             </div>
             <p class="card-text"><%= prestation.artisan.first_name %> <%= prestation.artisan.last_name %></p>
-            <i class="fas fa-trash float-right"></i>
-            <i class="fas fa-edit float-right" style="margin-right: 10px"></i>
-            <i class="fas fa-thumbs-up float-right" style="margin-right: 10px; color: white"></i>
-            <i class="fas fa-times float-right" style="margin-right: 10px; color: white"></i>
+            <div class="prestation-card-actions">
+              <i class="fas fa-trash float-right"></i>
+              <i class="fas fa-edit float-right"></i>
+              <% if prestation.booked? %>
+                <i class="fas fa-thumbs-up float-right booked" id="thumb-<%= prestation.id %>"></i>
+              <% else %>
+                <%= link_to accept_prestation_path(prestation), method: :post, remote: true do %>
+                  <i class="fas fa-thumbs-up float-right" id="thumb-<%= prestation.id %>"></i>
+                <% end %>
+              <% end %>
+              <% if prestation.declined? %>
+                <i class="fas fa-times float-right declined" id="cross-<%= prestation.id %>"></i>
+              <% else %>
+                <%= link_to decline_prestation_path(prestation), method: :post, remote: true do %>
+                  <i class="fas fa-times float-right" id="cross-<%= prestation.id %>"></i>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

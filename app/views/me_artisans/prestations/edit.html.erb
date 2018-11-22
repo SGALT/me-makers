@@ -4,7 +4,7 @@
     <img src="https://www.zervant.com/wp-content/uploads/2015/01/modele-gratuit-de-devis-a-telecharger-sous-format-excel.png" style="max-height: 194px">
   </div>
 
-  <%= simple_form_for @prestation do |f| %>
+  <%= simple_form_for [:me_artisans, @prestation] do |f| %>
     <%= @prestation.errors.full_messages.join(', ') %>
     <%= f.input :title %>
     <%= f.input :description %>

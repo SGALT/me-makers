@@ -1,4 +1,2 @@
-function refreshPrestation() {
-  const newPrestationdeclinedCard = document.getElementByClass('fa-thumbs-up');
-  newPrestationdeclinedCard.style.color = "red";
-}
+  const cross = document.getElementById('cross-<%= @prestation.id %>');
+  cross.classList.add('declined');

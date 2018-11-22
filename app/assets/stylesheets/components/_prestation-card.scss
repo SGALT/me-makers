@@ -1,14 +1,12 @@
 .prestation-card-actions {
+  i {
+    margin-right: 10px;
+    color: white;
+  }
   .booked {
     color: green;
-    margin-right: 10px;
-  };
+  }
   .declined {
     color: red;
-    margin-right: 10px;
-  };
-  .pending {
-    color: blue;
-    margin-right: 10px;
   }
 }

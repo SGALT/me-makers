@@ -2,7 +2,7 @@
   <h1 class="top-title">Tous mes projets</h1>
 
     <div style="text-align: center; margin-bottom: 30px">
-      <img src="https://pngimage.net/wp-content/uploads/2018/06/homes-png.png" style="max-height: 200px; max-width: : 200px">
+      <img src="https://pngimage.net/wp-content/uploads/2018/06/homes-png.png" style="max-height: 200px; max-width: -webkit-fill-available">
   </div>
 
   <% @projects.each do |project| %>
@@ -14,11 +14,7 @@
           </div>
           <div class="col-8">
             <h5 class="card-title"><%= link_to project.title, project_path(project) %></h5>
-              <p><a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Show description</a></p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body" style="color: #545d7e; text-shadow:none"><%= project.description %></div>
-            </div>
+              <p><%= project.description %></p>
             <p class="card-text" style="font-size: 10px"><%= project.date %></p>
             <%= link_to edit_project_path(project) do %>
               <i class="fas fa-edit float-right"></i>

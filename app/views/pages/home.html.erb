@@ -92,7 +92,7 @@
       </div>
     </div>
 
-      <div class="row categories">
+      <div class="row categories" style="margin-bottom:30px">
         <div class="col-6">
           <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
         </div>
@@ -103,46 +103,35 @@
 
 
  <!--  carte large -->
-  <div class="row card-artisan">
-    <div class="col-2">
-      <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+ <% @artisans.each do |artisan| %>
+ <%= link_to artisan_path(artisan.id) do %>
+  <div class="card border-white" style="margin-bottom: 20px">
+    <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
+        <div class="float-left" style="margin-right: 10px">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+        </div>
+        <div style="margin-left: 10px">
+          <h5 class="card-title"><%= artisan.specialty %></h5>
+          <h6 class="card-title"><%= artisan.first_name %><%= artisan.last_name %></h6>
+          <i class="fas fa-heart float-right"></i>
+          <i class="fas fa-share float-right" style="margin-right: 10px"></i>
+        <div>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+          <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
+        </div>
+        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
     </div>
-    <div class="col-6">
-      <p style="font-size: 18px; padding-left: 20px">Company</p>
-      <p style="font-size: 14px; padding-left: 20px">Specialty</p>
-    </div>
-    <div class="col-4" style="text-align: center">
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-    </div>
-    <div class="col-12">
-      <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
-    </div>
+    <% end %>
+    <% end  %>
   </div>
 
 
-      <div class="row card-artisan">
-      <div class="col-2">
-        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-      </div>
-      <div class="col-6">
-        <p style="font-size: 18px; padding-left: 20px">Company</p>
-        <p style="font-size: 14px; padding-left: 20px">Specialty</p>
-      </div>
-      <div class="col-4" style="text-align: center">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <div class="col-12">
-        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
-      </div>
-    </div>
+
 
 
 

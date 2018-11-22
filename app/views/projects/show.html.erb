@@ -1,9 +1,9 @@
 <div class="container">
 
-  <h1 style="text-align: center; margin-top: 20px">Mon projet</h1>
+  <h1 class="top-title"><%= @project.title %></h1>
 
 <!-- image -->
-  <img src="https://images.pexels.com/photos/204725/pexels-photo-204725.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+  <img src="https://images.pexels.com/photos/204725/pexels-photo-204725.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid rounded" alt="Responsive image">
 
 <!-- search -->
   <div class="search-home" style="margin-top: 20px">
@@ -59,7 +59,7 @@
             <div class="collapse" id="collapseExample">
               <div class="card card-body"><%= prestation.description %></div>
             </div>
-            <p class="card-text"><%= prestation.user.first_name %> <%= prestation.user.last_name %></p>
+            <p class="card-text"><%= prestation.artisan.first_name %> <%= prestation.artisan.last_name %></p>
             <div class="prestation-card-actions">
               <i class="fas fa-trash float-right"></i>
               <i class="fas fa-edit float-right"></i>

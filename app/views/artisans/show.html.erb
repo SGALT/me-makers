@@ -1,6 +1,7 @@
 <div class="container">
-    <h1 style="text-align: center; margin-top: 20px"><%= @artisan.first_name %> <%= @artisan.last_name %></h1>
-    <h4 style="text-align: center; margin-bottom: 20px"><%= @artisan.specialty %></h4>
+    <h1 class="top-title"><%= @artisan.first_name %> <%= @artisan.last_name %></h1>
+    <h4 class="top-title"><%= @artisan.specialty %></h4>
+
 
 
 
@@ -27,35 +28,36 @@
   </a>
 </div>
 
-<!-- profil -->
-<div class="card border-white" style="margin-bottom: 50px; margin-top: 20px">
-  <div class="card-body" style="color: #545d7e; text-shadow:none">
-      <div class="float-left" style="margin-right: 10px">
-        <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
-      </div>
-      <div style="margin-left: 10px">
-        <h5 class="card-title">Card title</h5>
-      <div>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-      </div>
-        <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
-        <i class="fas fa-heart float-right"></i>
-        <i class="fas fa-share float-right" style="margin-right: 10px"></i>
-      </div>
-  </div>
-</div>
 
-<!-- Map -->
-  <div id="map" style="width: 100%; height: 300px; margin-top: 30px" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <!-- profil -->
+  <div class="card border-white" style="margin-bottom: 50px; margin-top: 20px">
+    <div class="card-body" style="color: #545d7e; text-shadow:none">
+        <div class="float-left" style="margin-right: 10px">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+        </div>
+        <div style="margin-left: 10px">
+          <h5 class="card-title">Card title</h5>
+        <div>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+          <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
+          <i class="fas fa-heart float-right"></i>
+          <i class="fas fa-share float-right" style="margin-right: 10px"></i>
+        </div>
+    </div>
   </div>
+
+  <!-- Map -->
+    <div id="map" style="width: 100%; height: 300px; margin-top: 30px" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
 
 <!-- Reviews -->
-<h1 style="text-align:center; margin-top: 30px">Reviews:</h1>
+<h1 class="top-title">Reviews:</h1>
 <div class="card" style="margin-bottom: 100px; margin-top: 20px; background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%)">
   <div class="card-body">
       <div class="float-left" style="margin-right: 10px">
@@ -76,19 +78,17 @@
   </div>
 </div>
 
-<!-- Menu déroulant -->
-<div class="dropdown fixed-bottom" style="margin-bottom: 10px">
-  <button class="btn btn-danger dropdown-toggle btn-lg btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose your project
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">First project</a>
-    <a class="dropdown-item" href="#">Second project</a>
-    <a class="dropdown-item" href="#">Third project</a>
+
+  <!-- Menu déroulant -->
+  <div class="dropdown fixed-bottom" style="margin-bottom: 10px">
+    <button class="btn btn-danger dropdown-toggle btn-lg btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose your project
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% current_user.projects.each do |project| %>
+        <%= link_to project.title, artisan_prestations_path(@artisan, project_id: project.id), method: :post, class: "dropdown-item" %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-</div>
-
 

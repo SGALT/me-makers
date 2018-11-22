@@ -1,31 +1,44 @@
 <div class="container">
-  <h1 style="text-align: center; margin-top: 20px">Tous nos artisans</h1>
+  <h1 class="top-title">Tous nos artisans</h1>
 
-  <div>
-    <div class="row">
-      <% @artisans.each do |artisan| %>
-      <%= link_to artisan_path(artisan.id) do %>
-      <div class="col-xs-2">
-        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-      </div>
-      <div class="col-xs-6">
-        <p style="font-size: 18px; padding-left: 20px"><%= artisan.specialty %></p>
-        <p style="font-size: 14px; padding-left: 20px"><%= artisan.first_name %><%= artisan.last_name %></p>
-      </div>
-      <div class="col-xs-4" style="text-align: center">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <div class="col-xs-12">
-        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card" style="margin-bottom: 60px">
-      </div>
+  <div style="text-align: center;">
+    <img src="https://www.renovationettravaux.fr/wp-content/uploads/2015/04/Les-artisans-du-b%C3%A2timent.jpg" style="max-height: 200px">
+  </div>
+
+
+ <% @artisans.each do |artisan| %>
+ <%= link_to artisan_path(artisan.id) do %>
+  <div class="card border-white" style="margin-bottom: 20px">
+    <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
+        <div class="float-left" style="margin-right: 10px">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+        </div>
+        <div style="margin-left: 10px">
+          <h5 class="card-title"><%= artisan.specialty %></h5>
+          <h6 class="card-title"><%= artisan.first_name %><%= artisan.last_name %></h6>
+          <i class="fas fa-heart float-right"></i>
+          <i class="fas fa-share float-right" style="margin-right: 10px"></i>
+        <div>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+          <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
+        </div>
+        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
+    </div>
     <% end %>
     <% end  %>
-    </div>
   </div>
+
+
+
+
+
+
+
 
 
 

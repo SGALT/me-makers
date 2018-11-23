@@ -24,7 +24,7 @@ User.create!(
   phone_number: Faker::PhoneNumber.phone_number,
   birthdate: Faker::Date.backward(14),
   photo: 'https://kitt.lewagon.com/placeholder/users/random',
-  address: Faker::Address.city,
+  address: Faker::Address.full_address,
   password: 'secret',
   artisan: false
 )
@@ -40,7 +40,7 @@ User.new(
   siret: Faker::Number.number(10),
   realisations: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330",
   photo: 'https://kitt.lewagon.com/placeholder/users/random',
-  address: Faker::Address.city,
+  address: Faker::Address.full_address,
   password: 'secret',
   artisan: true,
   )
@@ -55,7 +55,7 @@ User.new(
     phone_number: Faker::PhoneNumber.phone_number,
     birthdate: Faker::Date.backward(14),
     photo: 'https://kitt.lewagon.com/placeholder/users/random',
-    address: Faker::Address.city,
+    address: Faker::Address.full_address,
     password: 'secret',
     artisan: false
   )
@@ -76,7 +76,7 @@ puts 'creating artisans'
     siret: Faker::Number.number(10),
     realisations: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330",
     photo: 'https://kitt.lewagon.com/placeholder/users/random',
-    address: Faker::Address.city,
+    address: Faker::Address.full_address,
     password: 'secret',
     artisan: true,
   )

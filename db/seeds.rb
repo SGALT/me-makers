@@ -20,7 +20,7 @@ puts 'Creating users...'
 User.create!(
   email: 'toto@gmail.com',
   first_name: 'Jean Michel',
-  Last_name: 'Client',
+  last_name: 'Client',
   phone_number: Faker::PhoneNumber.phone_number,
   birthdate: Faker::Date.backward(14),
   photo: 'https://kitt.lewagon.com/placeholder/users/random',
@@ -47,7 +47,7 @@ User.new(
 
 
 
-8.times do
+9.times do
   user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -64,7 +64,7 @@ end
 
 puts 'creating artisans'
 
-10.times do
+9.times do
   user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -89,16 +89,17 @@ puts "project creation"
     title: title.sample,
     description: Faker::ChuckNorris.fact,
     date: Date.today + (1..45).to_a.sample,
-    user: User.where(artisan: false).sample,
+    user: (User.where(artisan: false)).sample,
     photo: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330"
     )
   project.save!
+  puts "prestation creation"
   2.times do
     prestation = Prestation.new(
       title: project.title,
       description: project.description,
       project_id: project.id,
-      artisan_id: User.where(artisan: true).sample,
+      artisan: (User.where(artisan: true)).sample,
       state: 0
       )
   prestation.save!

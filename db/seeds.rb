@@ -29,7 +29,7 @@ User.create!(
   artisan: false
 )
 
-User.new(
+User.create!(
   email: 'artisan@gmail.com',
   first_name: 'Jean Michel',
   last_name: 'Artisan',
@@ -100,7 +100,7 @@ puts "project creation"
       description: project.description,
       project_id: project.id,
       artisan: (User.where(artisan: true)).sample,
-      state: 0
+      state: 0,
       )
   prestation.save!
   end

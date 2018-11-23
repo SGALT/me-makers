@@ -1,4 +1,4 @@
-  <div style="text-align: center; margin-bottom: 30px">
+  <div style="text-align: center; margin-bottom: -30px">
     <img src="https://images.pexels.com/photos/298842/pexels-photo-298842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" style="max-height: 375px; max-width: 375px">
       <p class="caption">ME Makers</p>
   </div>
@@ -113,7 +113,7 @@
   <div class="card border-white" style="margin-bottom: 20px">
     <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
         <div class="float-left" style="margin-right: 10px">
-          <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+          <%= cl_image_tag artisan.photo, class: "rounded-circle", style: "height: 60px; width: 60px"%>
         </div>
         <div style="margin-left: 10px">
           <h5 class="card-title"><%= artisan.specialty.capitalize %></h5>

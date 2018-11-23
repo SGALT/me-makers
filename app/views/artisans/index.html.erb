@@ -11,7 +11,7 @@
       <div class="card border-white" style="margin-bottom: 20px">
         <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
           <div class="float-left" style="margin-right: 10px">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
+            <%= cl_image_tag artisan.photo, class: "rounded-circle", style: "height: 60px; width: 60px" %>
           </div>
           <div style="margin-left: 10px">
             <h5 class="card-title"><%= artisan.specialty.capitalize %></h5>

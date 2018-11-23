@@ -28,7 +28,6 @@ class PrestationsController < ApplicationController
     @prestation.save
     flash[:notice] = "Demande de devis envoyé!"
     redirect_to project_path(params[:project_id])
-
   end
 
   private

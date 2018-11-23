@@ -10,7 +10,7 @@
       <div class="card-body" style="color: #545d7e; text-shadow:none">
         <div class="row">
           <div class="col-4">
-            <%= image_tag project.photo.identifier, class: "rounded float-left", style: "height: 100px; width: 100px;" %>
+            <%= cl_image_tag project.photo, class: "rounded float-left", style: "height: 100px; width: 100px;" %>
           </div>
           <div class="col-8">
             <h5 class="card-title"><%= link_to project.title, project_path(project) %></h5>

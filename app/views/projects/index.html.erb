@@ -19,7 +19,7 @@
             <%= link_to edit_project_path(project) do %>
               <i class="fas fa-edit float-right"></i>
             <% end %>
-            <%= link_to project_path(project), method: :delete do %>
+            <%= link_to project_path(project), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
               <i class="fas fa-trash float-right" style="margin-right: 10px"></i>
             <% end %>
           </div>

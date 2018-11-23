@@ -17,7 +17,37 @@ User.destroy_all
 
 puts 'Creating users...'
 
-10.times do
+User.create!(
+  email: 'toto@gmail.com',
+  first_name: 'Jean Michel',
+  last_name: 'Client',
+  phone_number: Faker::PhoneNumber.phone_number,
+  birthdate: Faker::Date.backward(14),
+  photo: 'https://kitt.lewagon.com/placeholder/users/random',
+  address: Faker::Address.city,
+  password: 'secret',
+  artisan: false
+)
+
+User.new(
+  email: 'artisan@gmail.com',
+  first_name: 'Jean Michel',
+  last_name: 'Artisan',
+  phone_number: Faker::PhoneNumber.phone_number,
+  birthdate: Faker::Date.backward(14),
+  specialty: specialty.sample,
+  company: Faker::Company.name,
+  siret: Faker::Number.number(10),
+  realisations: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330",
+  photo: 'https://kitt.lewagon.com/placeholder/users/random',
+  address: Faker::Address.city,
+  password: 'secret',
+  artisan: true,
+  )
+
+
+
+9.times do
   user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -27,14 +57,14 @@ puts 'Creating users...'
     photo: 'https://kitt.lewagon.com/placeholder/users/random',
     address: Faker::Address.city,
     password: 'secret',
-    artisan: false,
+    artisan: false
   )
   user.save!
 end
 
 puts 'creating artisans'
 
-10.times do
+9.times do
   user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -59,16 +89,17 @@ puts "project creation"
     title: title.sample,
     description: Faker::ChuckNorris.fact,
     date: Date.today + (1..45).to_a.sample,
-    user: User.all.sample,
+    user: (User.where(artisan: false)).sample,
     photo: "https://s1.lmcdn.fr/multimedia/fb1500838806/11b12593aa913/produits/douche/new-douche.jpg?p=md-w330"
     )
   project.save!
+  puts "prestation creation"
   2.times do
     prestation = Prestation.new(
       title: project.title,
       description: project.description,
       project_id: project.id,
-      user_id: project.user.id,
+      artisan: (User.where(artisan: true)).sample,
       state: 0
       )
   prestation.save!

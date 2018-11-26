@@ -6,7 +6,7 @@
       <h5><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></h5>
     <% else %>
       <h5><%= @prestation.artisan.first_name %> <%= @prestation.artisan.last_name %></h5>
-      <h6><%= @prestation.artisan.specialty.capitalize %></h6>
+      <h6><%= @prestation.artisan.specialty %></h6>
     <% end %>
     <br>
     <h6><strong>Titre</strong></h6>

@@ -66,6 +66,7 @@
 
 <% content_for :after_js do %>
   <script>
+    scrollLastMessageIntoView();
     App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
       { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
       connected: () => {
@@ -79,6 +80,7 @@
         }
         const input = document.querySelector('#message_content');
         input.value = '';
+        scrollLastMessageIntoView();
         }
       }
     )

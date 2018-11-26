@@ -1,0 +1,22 @@
+<h1 class="top-title">Avis</h1>
+
+  <div class="card" style="margin-bottom: 100px; margin-top: 20px; background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%)">
+    <div class="card-body">
+      <% @prestations.each do |prestation| %>
+        <% if prestation.review.present? %>
+          <h4><%= User.find(prestation.project.user_id).first_name %> <%= User.find(prestation.project.user_id).last_name %></h4>
+          <% if prestation.rating.present? %>
+            <% prestation.rating.times do  %>
+              <span class="fas fa-star" style="color: black; font-size: 15px"></span>
+            <% end %>
+            <% (5 - prestation.rating).times do %>
+              <span class="fas fa-star" style="color: white; font-size: 15px"></span>
+            <% end %>
+          <% end %>
+          <p class="media-comment">
+            <%= prestation.review %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

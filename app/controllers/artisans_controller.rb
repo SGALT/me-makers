@@ -9,6 +9,7 @@ class ArtisansController < ApplicationController
 
   def show
     @artisan = User.find(params[:id])
+    @prestations = Prestation.where(artisan_id: @artisan)
     if @artisan.latitude != nil
       @markers = [{
           lng: @artisan.longitude,

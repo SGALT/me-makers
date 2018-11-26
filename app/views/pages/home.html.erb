@@ -19,9 +19,10 @@
 </div>
 
 <!-- categories links -->
+
   <div class="row">
     <div class="col-6 category">
-      Spécialités
+      <p style="color: #535D7E">Spécialités</p>
     </div>
     <div class="col-6 see-all">
     <%= link_to "Tout Voir", artisans_path, class: 'css_class', style: 'color:#F5A623' %>
@@ -30,37 +31,11 @@
 
 
  <!--  categories icons-->
-  <div class="row categories">
-    <div class="col-4 icon-categories">
-      <img src="https://static.thenounproject.com/png/8141-200.png"; class="tab-miniatures">
-        Plombier
-    </div>
-    <div class="col-4 icon-categories">
-      <img src="https://png2.kisspng.com/20180328/bhw/kisspng-paintbrush-paintbrush-computer-icons-palette-painting-5abbd6270ccc00.6698777815222594950524.png" class="tab-miniatures">
-      Peintre
-    </div>
-    <div class="col-4 icon-categories">
-      <img src="https://static.thenounproject.com/png/1124401-200.png" style="max-width: 48px">
-      Menuisier
-    </div>
-  </div>
-  <div class="row categories">
-    <div class="col-4 icon-categories">
-      <img src="http://cdn.onlinewebfonts.com/svg/img_351098.png" style="max-width: 48px">
-        Electricien
-    </div>
-    <div class="col-4 icon-categories">
-      <img src="https://static.thenounproject.com/png/586507-200.png" class="tab-miniatures">
-      Paysagiste
-    </div>
-    <div class="col-4 icon-categories">
-      <img src="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1605/tuktukdesign160500007/57495135-worker-icon-mechanic-craftsmen-engineer-workman-construction-builder-user-icon-in-illustration-.jpg?ver=6" style="max-width: 48px">
-      Maçon
-    </div>
-  </div>
+<%= render 'shared/categories' %>
+
 
   <!-- Carousel -->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 40px; margin-bottom: 40px">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 80px; margin-bottom: 80px">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100 rounded" style="max-height: 194px" src="https://louerunartisan.com/wp-content/uploads/2017/05/Devis_Travaux_Maisons-1.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
@@ -86,28 +61,10 @@
 </div>
 
 
-  <!-- mini cartes -->
-
-    <div class="row categories">
-      <div class="col-6">
-        <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
-      </div>
-      <div class="col-6">
-        <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
-      </div>
-    </div>
-
-      <div class="row categories" style="margin-bottom:30px">
-        <div class="col-6">
-          <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
-        </div>
-        <div class="col-6">
-          <img src="https://images.pexels.com/photos/6332/coffee-cup-books-home.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail">
-        </div>
-      </div>
 
 
  <!--  carte large -->
+ <h5 style="color: #545d7e">Découvrez les derniers artisans :</h5>
  <% @artisans_sample.each do |artisan| %>
  <%= link_to artisan_path(artisan.id) do %>
   <div class="card border-white" style="margin-bottom: 20px">
@@ -135,3 +92,4 @@
     <% end  %>
   </div>
 </div>
+

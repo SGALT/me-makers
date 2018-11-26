@@ -45,6 +45,6 @@ class PrestationsController < ApplicationController
   end
 
   def presta_params
-    params.require(:prestation).permit(:project_id, :artisan_id, :review, :rating)
+    params.require(:prestation).permit(:project_id, :artisan_id, :review, :rating, :title, :description, :workforce, :material, :price, :state, )
   end
 end

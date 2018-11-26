@@ -28,7 +28,14 @@ class PrestationsController < ApplicationController
     @prestation.save
     flash[:notice] = "Demande de devis envoyé!"
     redirect_to project_path(params[:project_id])
+  end
 
+  def update
+    if @prestation.update(presta_params)
+      redirect_to prestation_path(@prestation)
+    else
+      render :show
+    end
   end
 
   private
@@ -38,6 +45,6 @@ class PrestationsController < ApplicationController
   end
 
   def presta_params
-    params.permit(:project_id, :artisan_id)
+    params.require(:prestation).permit(:project_id, :artisan_id, :review, :rating)
   end
 end

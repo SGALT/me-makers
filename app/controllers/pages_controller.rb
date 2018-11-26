@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @artisans = User.search_by_specialty(params[:query])
     else
       @artisans = User.where(artisan: true)
+      @artisans_sample = @artisans.sort_by { |artisan| artisan.updated_at }.reverse.first(5)
     end
   end
 

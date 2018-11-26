@@ -3,23 +3,80 @@
   <h1 class="top-title"><%= @project.title %></h1>
 
 <!-- image -->
-  <img src="https://images.pexels.com/photos/204725/pexels-photo-204725.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid rounded" alt="Responsive image">
+  <div class="text-center">
+    <%= cl_image_tag @project.photo, class: "img-fluid rounded", style: "height: 300px; width: 300px;" %>
+    <br>
+    <br>
+    <h5>Description</h5>
+    <p><%= @project.description %></p>
+  </div>
 
 <!-- search -->
-  <div class="search-home" style="margin-top: 20px">
-  <%= form_tag artisans_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Trouve ton artisan"
-    %>
-    <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
+  <div class="search-home" style="margin-top: 20px; margin-bottom: 20px">
+    <%= form_tag artisans_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Trouve ton artisan"
+      %>
+      <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
     <% end %>
   </div>
 
- <!--  profil -->
+<!-- devis -->
+  <div class="devis">
+    <h5 class="text-center">Devis</h5>
+    <% @prestations.each do |prestation| %>
+      <div class="card" style="margin-bottom: 30px; background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%)">
+        <div class="card-body" style="color: #545d7e; text-shadow:none">
+          <div class="row">
+            <div class="col-4">
+              <%= cl_image_tag prestation.artisan.photo, class: "rounded float-left", style: "height: 100px; width: 100px"%>
+            </div>
+            <div class="col-8 prestation-card">
+              <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
+                <p>
+                <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Show description
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body"><%= prestation.description %></div>
+              </div>
+              <p class="card-text"><%= prestation.artisan.first_name %> <%= prestation.artisan.last_name %></p>
+              <div class="prestation-card-actions">
+                <% if prestation.booked? %>
+                  <i class="fas fa-thumbs-up float-right booked" id="thumb-<%= prestation.id %>"></i>
+                <% else %>
+                  <%= link_to accept_prestation_path(prestation), method: :post, remote: true do %>
+                    <i class="fas fa-thumbs-up float-right" id="thumb-<%= prestation.id %>"></i>
+                  <% end %>
+                <% end %>
+                <% if prestation.declined? %>
+                  <i class="fas fa-times float-right declined" id="cross-<%= prestation.id %>"></i>
+                <% else %>
+                  <%= link_to decline_prestation_path(prestation), method: :post, remote: true do %>
+                    <i class="fas fa-times float-right" id="cross-<%= prestation.id %>"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
- <div class="card border-white" style="margin-bottom: 50px">
+<!--  boutons -->
+  <div class="text-center">
+    <%= link_to "Retour", projects_path, class: 'btn btn-light btn-block' %>
+  </div>
+</div>
+
+
+<!--  profil -->
+
+<!--  <div class="card border-white" style="margin-bottom: 50px">
   <div class="card-body" style="color: #545d7e; text-shadow:none">
       <div class="float-left" style="margin-right: 10px">
         <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
@@ -39,53 +96,4 @@
           <i class="fas fa-edit float-right" style="margin-right: 10px"></i>
       </div>
   </div>
-</div>
-
-<!-- devis -->
-  <% @prestations.each do |prestation| %>
-    <div class="card" style="margin-bottom: 30px; background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%)">
-      <div class="card-body" style="color: #545d7e; text-shadow:none">
-        <div class="row">
-          <div class="col-4">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded float-left" style="height: 100px; width: 100px">
-          </div>
-          <div class="col-8 prestation-card">
-            <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation) %></h5>
-              <p>
-              <a class="btn btn-light btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Show description
-              </a>
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body"><%= prestation.description %></div>
-            </div>
-            <p class="card-text"><%= prestation.artisan.first_name %> <%= prestation.artisan.last_name %></p>
-            <div class="prestation-card-actions">
-              <i class="fas fa-trash float-right"></i>
-              <i class="fas fa-edit float-right"></i>
-              <% if prestation.booked? %>
-                <i class="fas fa-thumbs-up float-right booked" id="thumb-<%= prestation.id %>"></i>
-              <% else %>
-                <%= link_to accept_prestation_path(prestation), method: :post, remote: true do %>
-                  <i class="fas fa-thumbs-up float-right" id="thumb-<%= prestation.id %>"></i>
-                <% end %>
-              <% end %>
-              <% if prestation.declined? %>
-                <i class="fas fa-times float-right declined" id="cross-<%= prestation.id %>"></i>
-              <% else %>
-                <%= link_to decline_prestation_path(prestation), method: :post, remote: true do %>
-                  <i class="fas fa-times float-right" id="cross-<%= prestation.id %>"></i>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-<!--  boutons -->
-  <%= link_to "Retour", projects_path, class: 'btn btn-light' %>
-  <%= link_to "Devis", prestation_path, class: 'btn btn-light' %>
-  <%= link_to "Messages", prestation_path, class: 'btn btn-light' %>
-</div>
+</div> -->

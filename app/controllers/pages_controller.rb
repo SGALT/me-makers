@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :contact, :about, :blog, :decoration, :tips, :catalogues]
 
   def home
     if params[:query].present?
@@ -14,5 +14,17 @@ class PagesController < ApplicationController
   end
 
   def about
+  end
+
+  def blog
+  end
+
+  def decoration
+  end
+
+  def tips
+  end
+
+  def catalogues
   end
 end

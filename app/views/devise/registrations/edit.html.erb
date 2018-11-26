@@ -32,7 +32,7 @@
         <%= f.input :specialty, required: true %>
         <%= f.input :siret, required: true %>
         <%= f.input :company, required: true %>
-        <%= f.input :realisations %>
+        <%= f.file_field :portfolio, multiple: true %>
       <% end %>
     </div>
 

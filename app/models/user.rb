@@ -17,4 +17,5 @@ class User < ApplicationRecord
     }
 
   mount_uploader :photo, PhotoUploader
+  mount_uploader :portfolio, PhotoUploader
 end

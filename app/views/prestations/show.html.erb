@@ -45,4 +45,42 @@
       </p>
     <% end %>
   </div>
+
+  <!-- Chat-room -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="chat-header"><h4>Messagerie</h4></div>
+      <div class="messages">
+        <% @prestation.messages.each do |message| %>
+          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+        <% end %>
+      </div>
+      <div class="create-message">
+        <%= simple_form_for [@prestation, Message.new ], remote: true do |f| %>
+          <%= f.input :content, label: false %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
+      { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
+      connected: () => {
+        console.log("[CONNECTED]")
+      },
+      received: (data) => {
+        const messagesContainer = document.querySelector('.messages');
+        messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+        if (data.author_id == <%= current_user.id %>) {
+          document.getElementById(data.message_id).classList.add("right")
+        }
+        const input = document.querySelector('#message_content');
+        input.value = '';
+        }
+      }
+    )
+  </script>
+<% end %>

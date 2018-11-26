@@ -13,14 +13,14 @@
             <%= cl_image_tag project.photo, class: "rounded float-left", style: "height: 100px; width: 100px;" %>
           </div>
           <div class="col-8">
-            <h5 class="card-title"><%= link_to project.title, project_path(project) %></h5>
+            <h5 class="card-title"><%= link_to project.title, project_path(project),{:style=>'color:#F5A623'} %></h5>
               <p><%= project.description %></p>
             <p class="card-text" style="font-size: 10px"><%= project.date %></p>
             <%= link_to edit_project_path(project) do %>
-              <i class="fas fa-edit float-right"></i>
+              <i class="fas fa-edit float-right" style="color: #F5A623"></i>
             <% end %>
             <%= link_to project_path(project), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
-              <i class="fas fa-trash float-right" style="margin-right: 10px"></i>
+              <i class="fas fa-trash float-right" style="color: #F5A623; margin-right: 10px"></i>
             <% end %>
           </div>
         </div>

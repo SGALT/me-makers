@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container text-center">
   <h1 class="top-title">Votre devis</h1>
-  <div class="text-center">
+  <div>
     <h6>avec</h6>
     <% if current_user.artisan %>
       <h5><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></h5>
@@ -46,6 +46,22 @@
     <% end %>
   </div>
 
+  <!-- Avis et reviews -->
+  <h2>Ajoutez un avis</h2>
+
+  <%= simple_form_for @prestation do |f| %>
+      <fieldset class="rating">
+        <input type="radio" id="star5" name="prestation[rating]" value="5" /><label class = "full" for="star5" title="Parfait - 5 étoiles"></label>
+        <input type="radio" id="star4" name="prestation[rating]" value="4" /><label class = "full" for="star4" title="Très bien - 4 étoiles"></label>
+        <input type="radio" id="star3" name="prestation[rating]" value="3" /><label class = "full" for="star3" title="Moyen - 3 étoiles"></label>
+        <input type="radio" id="star2" name="prestation[rating]" value="2" /><label class = "full" for="star2" title="Déçu - 2 étoiles"></label>
+        <input type="radio" id="star1" name="prestation[rating]" value="1" /><label class = "full" for="star1" title="Très déçu - 1 étoile"></label>
+      </fieldset>
+    <%= f.input :review, label: false %>
+    <%= f.submit "Ajoutez un avis", class: "btn btn-primary btn-block"%>
+  <% end %>
+  <br>
+
   <!-- Chat-room -->
   <div class="row">
     <div class="col-sm-12">
@@ -62,43 +78,30 @@
       </div>
     </div>
   </div>
+
+
+  <% content_for :after_js do %>
+    <script>
+      scrollLastMessageIntoView();
+      App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
+        { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
+        connected: () => {
+          console.log("[CONNECTED]")
+        },
+        received: (data) => {
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          if (data.author_id == <%= current_user.id %>) {
+            document.getElementById(data.message_id).classList.add("right")
+          }
+          const input = document.querySelector('#message_content');
+          input.value = '';
+          scrollLastMessageIntoView();
+          }
+        }
+      )
+    </script>
+  <% end %>
+  <br>
+  <br>
 </div>
-
-<h2>Ajoutez un avis</h2>
-
-    <%= simple_form_for @prestation do |f| %>
-        <fieldset class="rating">
-          <input type="radio" id="star5" name="prestation[rating]" value="5" /><label class = "full" for="star5" title="Parfait - 5 étoiles"></label>
-          <input type="radio" id="star4" name="prestation[rating]" value="4" /><label class = "full" for="star4" title="Très bien - 4 étoiles"></label>
-          <input type="radio" id="star3" name="prestation[rating]" value="3" /><label class = "full" for="star3" title="Moyen - 3 étoiles"></label>
-          <input type="radio" id="star2" name="prestation[rating]" value="2" /><label class = "full" for="star2" title="Déçu - 2 étoiles"></label>
-          <input type="radio" id="star1" name="prestation[rating]" value="1" /><label class = "full" for="star1" title="Très déçu - 1 étoile"></label>
-        </fieldset>
-      <%= f.input :review, label: false %>
-      <%= f.submit "Ajoutez un avis", class: "btn btn-primary btn-block"%>
-    <% end %>
-    <br>
-
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
-      { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
-      connected: () => {
-        console.log("[CONNECTED]")
-      },
-      received: (data) => {
-        const messagesContainer = document.querySelector('.messages');
-        messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-        if (data.author_id == <%= current_user.id %>) {
-          document.getElementById(data.message_id).classList.add("right")
-        }
-        const input = document.querySelector('#message_content');
-        input.value = '';
-        scrollLastMessageIntoView();
-        }
-      }
-    )
-  </script>
-<% end %>
-

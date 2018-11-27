@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   namespace :me_artisans do
     resources :prestations, only: [:index, :edit, :update]
   end
+  mount ActionCable.server => "/cable"
 end

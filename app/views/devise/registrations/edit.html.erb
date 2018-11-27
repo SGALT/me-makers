@@ -12,38 +12,36 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
+      <%= f.input :password, label: "Mot de passe",
+                  hint: "Laisser vide si vous ne voulez pas le changer.",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
+      <%= f.input :password_confirmation, label: "Confirmation du Mdp",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
+      <%= f.input :current_password, label: "Mdp actuel",
+                  hint: "Besoin de votre Mdp pour l'éditer",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :first_name, required: true %>
-      <%= f.input :last_name, required: true %>
-      <%= f.input :phone_number, required: true %>
-      <%= f.input :address, required: true %>
-      <%= f.input :birthdate, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :first_name, required: true, label: "Prénom" %>
+      <%= f.input :last_name, required: true, label: "Nom" %>
+      <%= f.input :phone_number, required: true, label: "Numéro de téléphone" %>
+      <%= f.input :address, required: true, label: "Adresse" %>
+      <%= f.input :birthdate, label: "Date de naissance", as: :string, required: false, input_html: {class: "datepicker"} %>
       <% if current_user.artisan %>
-        <%= f.input :specialty, required: true %>
-        <%= f.input :siret, required: true %>
-        <%= f.input :company, required: true %>
-        <%= f.input :realisations %>
+        <%= f.input :specialty, required: true, label: "Métier" %>
+        <%= f.input :siret, required: true, label: "Siret" %>
+        <%= f.input :company, required: true, label: "Entreprise" %>
+        <%= f.file_field :portfolio, multiple: true, label: "Portfolio" %>
       <% end %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update" %>
+      <%= f.button :submit, "Editer", class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3>Supprimer mon compte</h3>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  <p><%= link_to "Cliquer ici pour supprimer votre compte", registration_path(resource_name), data: { confirm: "Etes vous sûr?" }, method: :delete %></p>
 </div>

@@ -116,6 +116,22 @@
     <% end %>
   </div>
 
+  <!-- Avis et reviews -->
+  <h2>Ajoutez un avis</h2>
+
+  <%= simple_form_for @prestation do |f| %>
+      <fieldset class="rating">
+        <input type="radio" id="star5" name="prestation[rating]" value="5" /><label class = "full" for="star5" title="Parfait - 5 étoiles"></label>
+        <input type="radio" id="star4" name="prestation[rating]" value="4" /><label class = "full" for="star4" title="Très bien - 4 étoiles"></label>
+        <input type="radio" id="star3" name="prestation[rating]" value="3" /><label class = "full" for="star3" title="Moyen - 3 étoiles"></label>
+        <input type="radio" id="star2" name="prestation[rating]" value="2" /><label class = "full" for="star2" title="Déçu - 2 étoiles"></label>
+        <input type="radio" id="star1" name="prestation[rating]" value="1" /><label class = "full" for="star1" title="Très déçu - 1 étoile"></label>
+      </fieldset>
+    <%= f.input :review, label: false %>
+    <%= f.submit "Ajoutez un avis", class: "btn btn-primary btn-block"%>
+  <% end %>
+  <br>
+
   <!-- Chat-room -->
   <div class="row">
     <div class="col-sm-12">
@@ -132,6 +148,7 @@
       </div>
     </div>
   </div>
+
 
 
 <!-- Avis -->

@@ -3,9 +3,7 @@
       <p class="caption">ME Makers</p>
   </div>
 
-
 <div class="container">
-
 <!--   search -->
 <div class="search-home">
 <%= form_tag artisans_path, method: :get do %>
@@ -18,24 +16,8 @@
 <% end %>
 </div>
 
-<!-- categories links -->
-
-  <div class="row">
-    <div class="col-6 category">
-      <p style="color: #535D7E">Spécialités</p>
-    </div>
-    <div class="col-6 see-all">
-    <%= link_to "Tout Voir", artisans_path, class: 'css_class', style: 'color:#F5A623' %>
-    </div>
-  </div>
-
-
- <!--  categories icons-->
-<%= render 'shared/categories' %>
-
-
-  <!-- Carousel -->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 80px; margin-bottom: 80px">
+<!-- Carousel -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 20px; margin-bottom: 20px">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100 rounded" style="max-height: 194px" src="https://louerunartisan.com/wp-content/uploads/2017/05/Devis_Travaux_Maisons-1.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
@@ -60,9 +42,23 @@
   </a>
 </div>
 
+<!-- categories links -->
+
+  <div class="row">
+    <div class="col-6 category">
+      <p style="color: #535D7E">Spécialités</p>
+    </div>
+    <div class="col-6 see-all">
+    <%= link_to "Tout Voir", artisans_path, class: 'css_class', style: 'color:#F5A623' %>
+    </div>
+  </div>
+
+
+ <!--  categories icons-->
+<%= render 'shared/categories' %>
 
  <!--  carte large -->
- <h5 style="color: #545d7e">Découvrez les derniers artisans :</h5>
+ <h5 style="color: #F5A623">Découvrez les derniers artisans :</h5>
  <% @artisans_sample.each do |artisan| %>
  <%= link_to artisan_path(artisan.id) do %>
   <div class="card border-white" style="margin-bottom: 20px">

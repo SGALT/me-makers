@@ -1,51 +1,81 @@
 <div class="container">
   <div class="btn btn-danger btn-block mt-5" id="chatbot_init" style="align-content: center">Creez votre projet</div>
-  <div class="container border rounded bg-light mt-5" id="chatbot_div" style="min-height: 400px">
+  <div class="container messages" id="chatbot_div" style="min-height: 400px">
     <%= simple_form_for @project do |f| %>
       <%= @project.errors.full_messages.join(', ') %>
-       <span>
+      <span>
         <iframe class="writing d-none" id="writing1" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
-        <p class="border rounded d-none" id="chatbot_intro">
+        <p class="message message-content d-none" id="chatbot_intro">
         Bonjour, je suis Théo le Bricolo pour vous servir
         </p>
-       </span>
-      <p class="d-none" id="chatbot_intro_1">
-      Je vais vous aider à créer votre projet !!
-      </p>
-      <p class="d-none" id="chatbot_chat_title">
-      Commençons par lui donner un nom :
-      </p>
-      <%= f.input :title, label: false, :input_html => { :class => 'd-none', id: 'chatbot_input_title' } %>
-      <p class="d-none" id="chatbot_chat_description">
-      Merci !
-      </p>
-      <p class="d-none" id="chatbot_chat_description_1">
-      Maintenant, expliquez nous en détail votre projet (m², pièce, situation, détails....) :
-      </p>
-      <%= f.input :description, label: false, :input_html => { :class => 'd-none', id: 'chatbot_input_descrition' } %>
-      <p class="d-none" id="chatbot_chat_date">
-      Merci
-      </p>
-      <p class="d-none" id="chatbot_chat_date_1">
-      Dites nous à quel moment vous souhaitez que les travaux démarre :
-      </p>
-      <%= f.input :date, label: false, as: :string, required: false, :input_html => { :class => 'datepicker chatbot_input_date d-none' } %>
-      <p class="d-none" id="chatbot_chat_photo">
-      Super !
-      </p>
-      <p class="d-none" id="chatbot_chat_photo_1">
-      Il ne reste plus qu'une étape !! Prenez une photo du futur chantier pour donner une idée à vos interlocuteurs :
-      </p>
-      <%= f.input :photo, label: false, :input_html => { :class => 'd-none', id: 'chatbot_input_photo' } %>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing2" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_intro_1">
+        Je vais vous aider à créer votre projet !!
+        </p>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing3" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_title">
+        Commençons par lui donner un nom :
+        </p>
+      </span>
+      <%= f.input :title, label: false, :input_html => { :class => 'mt-2 d-none', id: 'chatbot_input_title' } %>
+      <span>
+        <iframe class="writing d-none" id="writing4" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_description">
+        Merci !
+        </p>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing5" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_description_1">
+        Maintenant, expliquez nous en détail votre projet (m², pièce, situation, détails....) :
+        </p>
+      </span>
+      <%= f.input :description, label: false, :input_html => { :class => 'mt-2 d-none', id: 'chatbot_input_descrition' } %>
+      <span>
+        <iframe class="writing d-none" id="writing6" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content d-none" id="chatbot_chat_date">
+        Merci
+        </p>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing7" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_date_1">
+        Dites nous à quel moment vous souhaitez que les travaux démarre :
+        </p>
+      </span>
+      <%= f.input :date, label: false, as: :string, required: false, :input_html => { :class => 'mt-2 datepicker chatbot_input_date d-none' } %>
+      <span>
+        <iframe class="writing d-none" id="writing8" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_photo">
+        Super !
+        </p>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing9" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_photo_1">
+        Il ne reste plus qu'une étape !! Prenez une photo du futur chantier pour donner une idée à vos interlocuteurs :
+        </p>
+      </span>
+      <%= f.input :photo, label: false, :input_html => { :class => 'mt-2 d-none', id: 'chatbot_input_photo' } %>
       <%= f.input :photo_cache, as: :hidden %>
-      <p class="d-none" id="chatbot_chat_submit">
-      Impec !!
-      </p>
-      <p class="d-none" id="chatbot_chat_submit_1">
-      Il ne reste plus qu'à valider tout ça avec un dernier click !!
-      </p>
+      <span>
+        <iframe class="writing d-none" id="writing10" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_submit">
+        Impec !!
+        </p>
+      </span>
+      <span>
+        <iframe class="writing d-none" id="writing11" width="100" height="100" src="https://lottiefiles.com/iframe/3317-loading" frameborder="0" allowfullscreen></iframe>
+        <p class="message message-content mt-1 d-none" id="chatbot_chat_submit_1">
+        Il ne reste plus qu'à valider tout ça avec un dernier click !!
+        </p>
+      </span>
       <p class="d-none" id="chatbot_submit">
-        <%= f.button :submit, 'Créer', class: 'btn btn-danger btn-block' %>
+        <%= f.button :submit, 'Créer', class: 'mt-2 btn btn-danger btn-block' %>
       </p>
     <% end %>
   </div>

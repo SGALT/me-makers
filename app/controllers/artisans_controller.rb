@@ -1,4 +1,5 @@
 class ArtisansController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:query].present?
       @artisans = User.search_by_specialty(params[:query])

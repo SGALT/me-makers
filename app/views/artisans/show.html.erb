@@ -64,15 +64,17 @@
 
 
   <!-- Menu déroulant -->
-  <div class="dropup fixed-bottom" style="margin-bottom: 10px">
-    <button class="btn btn-danger dropdown-toggle btn-lg btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <% if current_user %>
+    <div class="dropup fixed-bottom" style="margin-bottom: 10px">
+      <button class="btn btn-danger dropdown-toggle btn-lg btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Choisis ton projet
-    </button>
-    <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+      </button>
+      <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
       <% current_user.projects.each do |project| %>
         <%= button_to project.title, artisan_prestations_path(@artisan, project_id: project.id), method: :post, class: "dropdown-item" %>
       <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 

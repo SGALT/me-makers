@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center">Mon profil</h2>
+  <h1 class="top-title">Mon profil</h1>
   <%= cl_image_tag @user.photo, class: "rounded-circle mx-auto d-block", style: "width: 100px" %>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -37,11 +37,11 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Editer", class: "btn btn-primary btn-block" %>
+      <%= f.button :submit, "Editer", class: "btn btn-danger btn-block" %>
     </div>
   <% end %>
 
-  <h3>Supprimer mon compte</h3>
+  <h1 class="top-title" style="margin-top: 60px">Supprimer mon compte</h1>
 
-  <p><%= link_to "Cliquer ici pour supprimer votre compte", registration_path(resource_name), data: { confirm: "Etes vous sûr?" }, method: :delete %></p>
+  <p style="text-align: center"><%= link_to "Cliquer ici pour supprimer votre compte", registration_path(resource_name), data: { confirm: "Etes vous sûr?" }, method: :delete %></p>
 </div>

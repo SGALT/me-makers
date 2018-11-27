@@ -58,7 +58,7 @@
 <%= render 'shared/categories' %>
 
  <!--  carte large -->
- <h5 style="color: #F5A623">Découvrez les derniers artisans :</h5>
+ <h1 class="top-title" style="margin-top: 60px">Découvrez les derniers artisans :</h1>
  <% @artisans_sample.each do |artisan| %>
  <%= link_to artisan_path(artisan.id) do %>
   <div class="card border-white" style="margin-bottom: 20px">

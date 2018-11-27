@@ -31,7 +31,7 @@ class PrestationsController < ApplicationController
   end
 
   def update
-    if @prestation.update(presta_params)
+    if @prestation.update(params_presta)
       redirect_to prestation_path(@prestation)
     else
       render :show
@@ -45,6 +45,10 @@ class PrestationsController < ApplicationController
   end
 
   def presta_params
-    params.require(:prestation).permit(:project_id, :artisan_id, :review, :rating, :title, :description, :workforce, :material, :price, :state, )
+    params.permit(:project_id, :artisan_id)
+  end
+
+  def params_presta
+    params.require(:prestation).permit(:project_id, :artisan_id, :review, :rating)
   end
 end

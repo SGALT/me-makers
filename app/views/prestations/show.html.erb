@@ -1,6 +1,76 @@
-<div class="container text-center">
+<div class="container">
+  <div style="box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50); padding: 20px">
+    <h1 style="text-align: center">Devis</h1>
+    <div class="row">
+      <span style="text-align: center;"><img alt="" style="max-height: 80px; max-width: 80px" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
+      <div class="col-6" style="margin-top: 30px">
+            <address contenteditable>
+            <p>Jonathan Neal</p>
+            <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
+            <p>(800) 555-1234</p>
+            </address>
+      </div>
+      <div class="col-6" style="margin-top: 30px; text-align: right;">
+            <address contenteditable>
+              <p>Votre entreprise<br>Votre nom</p>
+            </address>
+      </div>
+  </div>
+
+
+        <h1>Description</h1>
+           <table class="meta" style="margin-bottom: 30px">
+              <tr>
+                <th><span contenteditable>Devis #</span></th>
+                <td><span contenteditable>101138</span></td>
+              </tr>
+              <tr>
+                <th><span contenteditable>Date</span></th>
+                <td><span contenteditable>1 Janvier 2019</span></td>
+              </tr>
+              <tr>
+                <th><span contenteditable>Prix</span></th>
+                <td><span id="prefix" contenteditable>€</span><span>600.00</span></td>
+              </tr>
+            </table>
+
+            <table class="inventory">
+              <thead>
+                <tr>
+                  <th><span contenteditable>Item</span></th>
+                  <th><span contenteditable>Description</span></th>
+                  <th><span contenteditable>Prix</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a class="cut">-</a><span contenteditable>Matériaux</span></td>
+                  <td><span contenteditable>Bois, fer...</span></td>
+                  <td><span data-prefix>€</span><span>600.00</span></td>
+                </tr>
+                <tr>
+                  <td><a class="cut">-</a><span contenteditable>Main d'oeuvre</span></td>
+                  <td><span contenteditable>Un artisan - 10h</span></td>
+                  <td><span data-prefix>€</span><span>600.00</span></td>
+                </tr>
+              </tbody>
+            </table>
+              <tr>
+                <th><span contenteditable>Total</span></th>
+                <td><span data-prefix>€</span><span>600.00</span></td>
+              </tr>
+
+  </div>
+</div>
+
+
+
+<!-- Sylvain -->
+
+<div class="container">
   <h1 class="top-title">Votre devis</h1>
-  <div>
+
+  <div class="text-center">
     <h6>avec</h6>
     <% if current_user.artisan %>
       <h5><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></h5>
@@ -65,7 +135,7 @@
   <!-- Chat-room -->
   <div class="row">
     <div class="col-sm-12">
-      <div class="chat-header"><h4>Messagerie</h4></div>
+      <div class="chat-header"><h1 class="top-title" style="color: white !important">Messagerie</h1></div>
       <div class="messages">
         <% @prestation.messages.each do |message| %>
           <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -80,28 +150,52 @@
   </div>
 
 
-  <% content_for :after_js do %>
-    <script>
-      scrollLastMessageIntoView();
-      App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
-        { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
-        connected: () => {
-          console.log("[CONNECTED]")
-        },
-        received: (data) => {
-          const messagesContainer = document.querySelector('.messages');
-          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-          if (data.author_id == <%= current_user.id %>) {
-            document.getElementById(data.message_id).classList.add("right")
-          }
-          const input = document.querySelector('#message_content');
-          input.value = '';
-          scrollLastMessageIntoView();
-          }
+
+<!-- Avis -->
+<h1 class="top-title" style="margin-top: 40px">Ajoutez un avis</h1>
+
+
+
+    <%= simple_form_for @prestation do |f| %>
+        <fieldset class="rating">
+          <input type="radio" id="star5" name="prestation[rating]" value="5" /><label class = "full" for="star5" title="Parfait - 5 étoiles"></label>
+          <input type="radio" id="star4" name="prestation[rating]" value="4" /><label class = "full" for="star4" title="Très bien - 4 étoiles"></label>
+          <input type="radio" id="star3" name="prestation[rating]" value="3" /><label class = "full" for="star3" title="Moyen - 3 étoiles"></label>
+          <input type="radio" id="star2" name="prestation[rating]" value="2" /><label class = "full" for="star2" title="Déçu - 2 étoiles"></label>
+          <input type="radio" id="star1" name="prestation[rating]" value="1" /><label class = "full" for="star1" title="Très déçu - 1 étoile"></label>
+        </fieldset>
+      <%= f.input :review, label: false %>
+      <%= f.submit "Ajoutez un avis", class: "btn btn-danger btn-block"%>
+    <% end %>
+    <br>
+
+<% content_for :after_js do %>
+  <script>
+    scrollLastMessageIntoView();
+    App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
+      { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
+      connected: () => {
+        console.log("[CONNECTED]")
+      },
+      received: (data) => {
+        const messagesContainer = document.querySelector('.messages');
+        messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+        if (data.author_id == <%= current_user.id %>) {
+          document.getElementById(data.message_id).classList.add("right")
         }
-      )
-    </script>
-  <% end %>
-  <br>
-  <br>
+        const input = document.querySelector('#message_content');
+        input.value = '';
+        scrollLastMessageIntoView();
+        }
+      }
+    )
+  </script>
+<% end %>
+
+
+
+
 </div>
+
+
+

@@ -47,7 +47,7 @@ init.addEventListener('click', (event) => {
   setTimeout(() => { print(writing3) }, 4100);
   setTimeout(() => { unprint(writing3) }, 5500);
   setTimeout(() => { print(chatTitle) }, 6000);
-  setTimeout(() => { print(inputTitle) }, 7000);
+  setTimeout(() => { print(inputTitle) }, 6100);
 });
 
 inputTitle.addEventListener('keyup', (event) => {
@@ -58,7 +58,7 @@ inputTitle.addEventListener('keyup', (event) => {
     setTimeout(() => { print(writing5) }, 2200);
     setTimeout(() => { unprint(writing5) }, 3600);
     setTimeout(() => { print(chatDescriptionOne) }, 4000);
-    setTimeout(() => { print(inputDescription) }, 5000);
+    setTimeout(() => { print(inputDescription) }, 4100);
   }
 });
 
@@ -72,7 +72,7 @@ inputDescription.addEventListener('keyup', (event) => {
     setTimeout(() => { print(chatDateOne) }, 4000);
     setTimeout(() => { inputDate.forEach(function(element) {
       print(element);
-    }) }, 5000);
+    }) }, 4100);
   }
 })
 
@@ -85,7 +85,7 @@ inputDate.forEach(function(element) {
       setTimeout(() => { print(writing9) }, 2200);
       setTimeout(() => { unprint(writing9) }, 3600);
       setTimeout(() => { print(chatPhotoOne) }, 4000);
-      setTimeout(() => { print(inputPhoto) }, 5000);
+      setTimeout(() => { print(inputPhoto) }, 4100);
     };
   })
 })
@@ -98,7 +98,7 @@ inputPhoto.addEventListener('keyup', (event) => {
     setTimeout(() => { print(writing11) }, 2200);
     setTimeout(() => { unprint(writing11) }, 3600);
     setTimeout(() => { print(chatSubmitOne) }, 4000);
-    setTimeout(() => { print(inputSubmit) }, 5000);
+    setTimeout(() => { print(inputSubmit) }, 4100);
   }
 })
 

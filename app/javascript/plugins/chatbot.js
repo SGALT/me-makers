@@ -30,13 +30,14 @@ const writing11 = document.getElementById('writing11')
 
 const form = document.getElementById('new_project')
 
-form.addEventListener('keypress', (event) => {
-  if(event.keyCode === 13){
-    event.preventDefault();
-  }
-  return true;
-})
-
+if (form) {
+  form.addEventListener('keypress', (event) => {
+    if(event.keyCode === 13){
+      event.preventDefault();
+    }
+    return true;
+  })
+}
 
 function print(element) {
   element.classList.remove('d-none');

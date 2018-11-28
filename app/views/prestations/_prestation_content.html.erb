@@ -1,0 +1,60 @@
+<div class="container">
+  <div style="box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50); padding: 20px">
+    <h1 style="text-align: center; padding-top: 70px; text-decoration: underline">Devis</h1>
+    <div class="row">
+      <div class="col-6" style="margin-top: 30px">
+        <div class="caption" style= "padding-top: 10px; font-size: 20px">ME Makers</div>
+            <address contenteditable>
+            <p><strong>Nom: </strong><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></p>
+            <p><strong>Adresse: </strong><%= @prestation.project.user.address %></p>
+            <p><strong>Tél: </strong><%= @prestation.project.user.phone_number %></p>
+            </address>
+      </div>
+      <div class="col-6" style="margin-top: 30px; text-align: right;">
+            <address contenteditable>
+              <p><%= @prestation.artisan.company %><br><%= @prestation.artisan.first_name %> <%= @prestation.artisan.last_name %></p>
+            </address>
+      </div>
+  </div>
+
+
+        <h1>Description</h1>
+           <table class="meta" style="margin-bottom: 30px">
+              <tr>
+                <th><span contenteditable>Devis n°</span></th>
+                <td><span contenteditable><%= @prestation.id %></span></td>
+              </tr>
+              <tr>
+                <th><span contenteditable>Date</span></th>
+                <td><span contenteditable><%= @prestation.project.date %></span></td>
+              </tr>
+              <tr>
+                <th><span contenteditable>Prix Total</span></th>
+                <td><span id="prefix" contenteditable>€</span><span><%= @prestation.price %></span></td>
+              </tr>
+            </table>
+
+            <table class="inventory">
+              <thead>
+                <tr>
+                  <th><span contenteditable>Item</span></th>
+                  <th><span contenteditable>Description</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a class="cut">-</a><span contenteditable>Matériaux</span></td>
+                  <td><span contenteditable><%= @prestation.material %></span></td>
+                </tr>
+                <tr>
+                  <td><a class="cut">-</a><span contenteditable>Main d'oeuvre</span></td>
+                  <td><span contenteditable><%= @prestation.workforce %></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="text-align: right; font-size: 10px">Signature du Particulier &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature de l'Artisan</div>
+            <br>
+            <br>
+            <br>
+  </div>
+</div>

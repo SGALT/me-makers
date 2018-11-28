@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:account_update,
       keys: [
-        :photo, :first_name, :last_name, :phone_number, :address, :birthdate, :siret, :company, :specialty
+        :photo, :first_name, :last_name, :phone_number, :address, :birthdate, :siret, :company, :specialty, achievement: [:photo, :title]
       ])
   end
 end

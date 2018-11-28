@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get 'tips', to: 'pages#tips', as: :tips
         get 'catalogues', to: 'pages#catalogues', as: :catalogues
 
+  resource :user, only: [:edit, :update]
+
   resources :artisans, only: [:index, :show] do
     resources :prestations, only: [:create]
   end

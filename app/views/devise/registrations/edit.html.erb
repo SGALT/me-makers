@@ -32,7 +32,13 @@
         <%= f.input :specialty, required: true, label: "Métier" %>
         <%= f.input :siret, required: true, label: "Siret" %>
         <%= f.input :company, required: true, label: "Entreprise" %>
-        <%= f.file_field :portfolio, multiple: true, label: "Portfolio" %>
+        <div id="achievement d-flex">
+          <%= f.simple_fields_for [@user, Achievement.create!(user_id: @user.id)] do |a| %>
+                <%= a.input :photo %>
+                <%= a.input :photo_cache, as: :hidden %>
+                <%= a.input :title %>
+          <% end %>
+        </div>
       <% end %>
     </div>
 

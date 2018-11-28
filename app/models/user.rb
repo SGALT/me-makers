@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :prestations
   has_many :projects
+  has_many :achievements, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -17,5 +18,4 @@ class User < ApplicationRecord
     }
 
   mount_uploader :photo, PhotoUploader
-  mount_uploader :portfolio, PhotoUploader
 end

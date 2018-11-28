@@ -1,5 +1,5 @@
 .image-large-card {
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 5px 4px 4px #aaa
 }
 
@@ -9,5 +9,8 @@
 }
 
 .img-thumbnail {
-  box-shadow: 5px 4px 4px #aaa
+  box-shadow: 1px 1px 1px 0.4px #aaa;
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
 }

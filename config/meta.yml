@@ -1,0 +1,8 @@
+# config/meta.yml
+
+meta_product_name: "Me Makers"
+meta_title: "Me Makers - Trouvez l'artisan qui vous correspond"
+meta_description: "Sélectionnez l'artisan local le plus qualifié pour réaliser vos travaux et projets. Comparez plus de 200 artisans pour trouver les meilleurs devis au meilleur prix. Me Makers, le site le plus performant de mise en relation entre artisans et particuliers.
+Rapide, efficace et 100% gratuit."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+

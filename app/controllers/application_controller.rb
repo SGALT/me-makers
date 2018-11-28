@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
         :photo, :first_name, :last_name, :phone_number, :address, :birthdate, :siret, :company, :specialty, {portfolio: []}
       ])
   end
+
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
 end

@@ -1,0 +1,9 @@
+<% unless artisan.prestations.where(state: "done").empty? %>
+  <% average = prestation_rating(artisan.prestations.where(state: "done")) %>
+  <% average.times do  %>
+    <span style="color: #ffc107; font-size: 15px"><i class="fas fa-star"></i></span>
+  <% end %>
+  <% (5 - average).times do %>
+    <span style="color: #ffc107; font-size: 15px"><i class="far fa-star"></i></span>
+  <% end %>
+<% end %>

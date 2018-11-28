@@ -34,35 +34,13 @@
         </div>
         <div class="create-message">
           <%= simple_form_for [@prestation, Message.new ], remote: true do |f| %>
-            <%= f.input :content, label: false %>
+            <%= f.input :content, label: false, placeholder: 'Ecrivez un message ici ...' %>
           <% end %>
         </div>
       </div>
     </div>
 
-    <% content_for :after_js do %>
-      <script>
-        scrollLastMessageIntoView();
-        App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
-          { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
-          connected: () => {
-            console.log("[CONNECTED]")
-          },
-          received: (data) => {
-            const messagesContainer = document.querySelector('.messages');
-            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            if (data.author_id == <%= current_user.id %>) {
-              document.getElementById(data.message_id).classList.add("right")
-            }
-            const input = document.querySelector('#message_content');
-            input.value = '';
-            scrollLastMessageIntoView();
-            }
-          }
-        )
-      </script>
-    <% end %>
-    <!-- Boutton terminé -->
+  <!-- Boutton terminer -->
     <% if current_user.artisan == false %>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#exampleModal">
@@ -92,11 +70,9 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Annuler</button>
-                <%= f.submit "Terminer", class: "btn btn-warning btn-block", id: "sweet-alert-demo" %>
+                <%= f.button :submit, 'Terminer', id: "sweet-alert-demo", class: "btn btn-warning btn-block" %>
               </div>
             <% end %>
-            <% sleep(3) %>
-
           </div>
         </div>
       </div>
@@ -104,5 +80,42 @@
   <% end %>
 </div>
 
+<% content_for :after_js do %>
+    <script>
+      scrollLastMessageIntoView();
+      App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
+        { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
+        connected: () => {
+          console.log("[CONNECTED]")
+        },
+        received: (data) => {
+          const messagesContainer = document.querySelector('.messages');
+          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          if (data.author_id == <%= current_user.id %>) {
+            document.getElementById(data.message_id).classList.add("right")
+          }
+          const input = document.querySelector('#message_content');
+          input.value = '';
+          scrollLastMessageIntoView();
+          }
+        }
+      )
+    </script>
+  <% end %>
+
+
+  <% if flash[:prestation_done]  %>
+    <% content_for :after_js do %>
+      <script>
+        swal({
+          title: "Félicitation",
+          text: "Votre projet est terminé",
+          icon: "success",
+          buttons: false,
+          timer: 2000
+        });
+      </script>
+    <% end %>
+  <% end %>
 
 

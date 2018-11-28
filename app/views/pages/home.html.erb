@@ -61,33 +61,26 @@
 <%= render 'shared/categories' %>
 
  <!--  carte large -->
- <h1 class="top-title" style="margin-top: 60px">Découvrez les derniers artisans :</h1>
- <% @artisans_sample.each do |artisan| %>
- <%= link_to artisan_path(artisan.id) do %>
-  <div class="card border-white" style="margin-bottom: 20px">
-    <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
-        <div class="float-left" style="margin-right: 10px">
-          <%= cl_image_tag artisan.photo, class: "rounded-circle", style: "height: 60px; width: 60px"%>
+  <h1 class="top-title" style="margin-top: 60px">Découvrez les derniers artisans :</h1>
+  <% @artisans_sample.each do |artisan| %>
+    <%= link_to artisan_path(artisan.id) do %>
+      <div class="card border-white" style="margin-bottom: 20px">
+        <div class="card-body border-white" style="color: #545d7e; text-shadow:none; padding-left: 0px; padding-right: 0px">
+            <div class="float-left" style="margin-right: 10px">
+              <%= cl_image_tag artisan.photo, class: "rounded-circle", style: "height: 60px; width: 60px"%>
+            </div>
+            <div style="margin-left: 10px">
+              <h5 class="card-title"><%= artisan.specialty %></h5>
+              <h6 class="card-title"><%= artisan.first_name %> <%= artisan.last_name %></h6>
+              <i class="fas fa-heart float-right"></i>
+              <i class="fas fa-share float-right" style="margin-right: 10px; color: #F5A623"></i>
+              <%= render 'shared/rating', artisan: artisan %>
+            </div>
+            <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
         </div>
-        <div style="margin-left: 10px">
-          <h5 class="card-title"><%= artisan.specialty %></h5>
-          <h6 class="card-title"><%= artisan.first_name %> <%= artisan.last_name %></h6>
-          <i class="fas fa-heart float-right"></i>
-          <i class="fas fa-share float-right" style="margin-right: 10px; color: #F5A623"></i>
-        <div>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-        </div>
-          <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
-        </div>
-        <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
-    </div>
+      </div>
     <% end %>
-    <% end  %>
-  </div>
+  <% end %>
 </div>
 
 

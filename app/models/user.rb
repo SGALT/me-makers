@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :messages, dependent: :destroy
-  has_many :prestations
+  has_many :prestations, foreign_key: 'artisan_id', inverse_of: 'artisan'
   has_many :projects
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

@@ -38,6 +38,7 @@ class PrestationsController < ApplicationController
 
   def update
     if @prestation.update(params_presta.merge(state: 'done'))
+      flash[:prestation_done] = true
       redirect_to prestation_path(@prestation)
     else
       render :show

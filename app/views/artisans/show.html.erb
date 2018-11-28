@@ -36,17 +36,14 @@
           <img src="https://kitt.lewagon.com/placeholder/users/random" alt="..." class="rounded-circle" style="height: 60px; width: 60px">
         </div>
         <div style="margin-left: 10px">
-          <h5 class="card-title">Card title</h5>
-        <div>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-        </div>
-          <p class="card-text">This is a wider card with supporting text below.This is a wider card with supporting text below.</p>
-
-
+          <h5 class="card-title"><%= @artisan.first_name %> <%= @artisan.last_name %></h5>
+          <h6><%= @artisan.specialty %></h6>
+          <%= render 'shared/rating', artisan: @artisan %>
+          <p class="card-text">
+            <p>Entreprise: <%= @artisan.company %></p>
+            <p>N° SIRET: <%= @artisan.siret %></p>
+            <p>Adresse: <%= @artisan.address %></p>
+          </p>
 
           <i class="fas fa-heart float-right"></i>
           <%= render 'shared/sharebutton' %>
@@ -59,8 +56,8 @@
     </div>
 
 
-<!-- Reviews -->
-<%= render "shared/review" %>
+  <!-- Reviews -->
+  <%= render "shared/review" %>
 
 
   <!-- Menu déroulant -->

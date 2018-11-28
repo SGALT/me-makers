@@ -2,21 +2,14 @@
 <%= render "prestation_content" %>
 
 
-<div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block' %></div>
+<div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block' %>
+</div>
 
 <div class="container">
   <% if current_user.artisan %>
     <p><br><%= link_to "Editer le devis", edit_me_artisans_prestation_path(@prestation), class: 'btn btn-warning btn-block' %>
-  <%# else %>
-       <%# if current_user.artisan == false %>
-       <%#= link_to "Valider", prestation_path, class: 'btn btn-warning btn-block' %>
-       <%#= @prestation.booked? %>
-       <%#= link_to "Rejeter", prestation_path, class: 'btn btn-danger btn-block' %>
-       <%#= @prestation.declined? %>
-       <%# end %>
     </p>
   <% end %>
-  </div>
 
 
   <!-- Etat devis en cours -->
@@ -26,7 +19,7 @@
     <!-- Chat-room -->
     <div class="row">
       <div class="col-sm-12">
-        <div class="chat-header"><h1 class="top-title" style="color: white !important">Messagerie</h1></div>
+        <div class="chat-header"><h1 class="text-center">Messagerie</h1></div>
         <div class="messages">
           <% @prestation.messages.each do |message| %>
             <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -34,12 +27,12 @@
         </div>
         <div class="create-message">
           <%= simple_form_for [@prestation, Message.new ], remote: true do |f| %>
-            <%= f.input :content, label: false, placeholder: 'Ecrivez un message ici ...' %>
+            <%= f.input :content, label: false, placeholder: 'Ecrivez votre message ici ...' %>
           <% end %>
         </div>
       </div>
     </div>
-
+    <br>
   <!-- Boutton terminer -->
     <% if current_user.artisan == false %>
       <!-- Button trigger modal -->
@@ -78,9 +71,8 @@
       </div>
     <% end %>
   <% end %>
-</div>
 
-<% content_for :after_js do %>
+  <% content_for :after_js do %>
     <script>
       scrollLastMessageIntoView();
       App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
@@ -117,5 +109,5 @@
       </script>
     <% end %>
   <% end %>
-
-
+</div>
+<br>

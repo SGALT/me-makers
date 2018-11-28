@@ -28,9 +28,19 @@ const writing9 = document.getElementById('writing9')
 const writing10 = document.getElementById('writing10')
 const writing11 = document.getElementById('writing11')
 
+const form = document.getElementById('new_project')
+
+form.addEventListener('keypress', (event) => {
+  if(event.keyCode === 13){
+    event.preventDefault();
+  }
+  return true;
+})
+
 
 function print(element) {
   element.classList.remove('d-none');
+  element.scrollIntoView({behavior: 'smooth'});
 }
 
 function unprint(element) {
@@ -51,7 +61,7 @@ init.addEventListener('click', (event) => {
 });
 
 inputTitle.addEventListener('keyup', (event) => {
-  if (event.key === 'ArrowRight') {
+  if (event.key === 'Enter') {
     print(writing4);
     setTimeout(() => { unprint(writing4) }, 1800);
     setTimeout(() => { print(chatDescription) }, 2000);
@@ -63,7 +73,7 @@ inputTitle.addEventListener('keyup', (event) => {
 });
 
 inputDescription.addEventListener('keyup', (event) => {
-  if (event.key === 'ArrowRight') {
+  if (event.key === 'Enter') {
     print(writing6)
     setTimeout(() => { unprint(writing6) }, 1800);
     setTimeout(() => { print(chatDate) }, 2000);
@@ -78,7 +88,7 @@ inputDescription.addEventListener('keyup', (event) => {
 
 inputDate.forEach(function(element) {
   element.addEventListener('keyup', (event) => {
-    if (event.key === 'ArrowRight') {
+    if (event.key === 'Enter') {
       print(writing8);
       setTimeout(() => { unprint(writing8) }, 1800);
       setTimeout(() => { print(chatPhoto) }, 2000);
@@ -91,7 +101,7 @@ inputDate.forEach(function(element) {
 })
 
 inputPhoto.addEventListener('keyup', (event) => {
-  if (event.key === 'ArrowRight') {
+  if (event.key === 'Enter') {
     print(writing10);
     setTimeout(() => { unprint(writing10) }, 1800);
     setTimeout(() => { print(chatSubmit) }, 2000);

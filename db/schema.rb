@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_153301) do
+ActiveRecord::Schema.define(version: 2018_11_28_101427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "title"
+    t.string "photo"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
@@ -73,11 +82,11 @@ ActiveRecord::Schema.define(version: 2018_11_26_153301) do
     t.string "siret"
     t.float "latitude"
     t.float "longitude"
-    t.json "portfolio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "achievements", "users"
   add_foreign_key "messages", "prestations"
   add_foreign_key "messages", "users"
   add_foreign_key "prestations", "projects"

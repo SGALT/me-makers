@@ -48,70 +48,80 @@ function unprint(element) {
   element.remove();
 }
 
-init.addEventListener('click', (event) => {
-  print(writing1);
-  setTimeout(() => { unprint(writing1) }, 1500);
-  setTimeout(() => { print(intro) }, 2000);
-  setTimeout(() => { print(writing2) }, 2200);
-  setTimeout(() => { unprint(writing2) }, 3500);
-  setTimeout(() => { print(introOne) }, 4000);
-  setTimeout(() => { print(writing3) }, 4100);
-  setTimeout(() => { unprint(writing3) }, 5500);
-  setTimeout(() => { print(chatTitle) }, 6000);
-  setTimeout(() => { print(inputTitle) }, 6100);
-});
+if (init) {
+  init.addEventListener('click', (event) => {
+    print(writing1);
+    setTimeout(() => { unprint(writing1) }, 1500);
+    setTimeout(() => { print(intro) }, 2000);
+    setTimeout(() => { print(writing2) }, 2200);
+    setTimeout(() => { unprint(writing2) }, 3500);
+    setTimeout(() => { print(introOne) }, 4000);
+    setTimeout(() => { print(writing3) }, 4100);
+    setTimeout(() => { unprint(writing3) }, 5500);
+    setTimeout(() => { print(chatTitle) }, 6000);
+    setTimeout(() => { print(inputTitle) }, 6100);
+  });
+}
 
-inputTitle.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    print(writing4);
-    setTimeout(() => { unprint(writing4) }, 1800);
-    setTimeout(() => { print(chatDescription) }, 2000);
-    setTimeout(() => { print(writing5) }, 2200);
-    setTimeout(() => { unprint(writing5) }, 3600);
-    setTimeout(() => { print(chatDescriptionOne) }, 4000);
-    setTimeout(() => { print(inputDescription) }, 4100);
-  }
-});
-
-inputDescription.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    print(writing6)
-    setTimeout(() => { unprint(writing6) }, 1800);
-    setTimeout(() => { print(chatDate) }, 2000);
-    setTimeout(() => { print(writing7) }, 2200);
-    setTimeout(() => { unprint(writing7) }, 3600);
-    setTimeout(() => { print(chatDateOne) }, 4000);
-    setTimeout(() => { inputDate.forEach(function(element) {
-      print(element);
-    }) }, 4100);
-  }
-})
-
-inputDate.forEach(function(element) {
-  element.addEventListener('keyup', (event) => {
+if (inputTitle) {
+  inputTitle.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-      print(writing8);
-      setTimeout(() => { unprint(writing8) }, 1800);
-      setTimeout(() => { print(chatPhoto) }, 2000);
-      setTimeout(() => { print(writing9) }, 2200);
-      setTimeout(() => { unprint(writing9) }, 3600);
-      setTimeout(() => { print(chatPhotoOne) }, 4000);
-      setTimeout(() => { print(inputPhoto) }, 4100);
-    };
-  })
-})
+      print(writing4);
+      setTimeout(() => { unprint(writing4) }, 1800);
+      setTimeout(() => { print(chatDescription) }, 2000);
+      setTimeout(() => { print(writing5) }, 2200);
+      setTimeout(() => { unprint(writing5) }, 3600);
+      setTimeout(() => { print(chatDescriptionOne) }, 4000);
+      setTimeout(() => { print(inputDescription) }, 4100);
+    }
+  });
+}
 
-inputPhoto.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    print(writing10);
-    setTimeout(() => { unprint(writing10) }, 1800);
-    setTimeout(() => { print(chatSubmit) }, 2000);
-    setTimeout(() => { print(writing11) }, 2200);
-    setTimeout(() => { unprint(writing11) }, 3600);
-    setTimeout(() => { print(chatSubmitOne) }, 4000);
-    setTimeout(() => { print(inputSubmit) }, 4100);
-  }
-})
+if (inputDescription) {
+  inputDescription.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      print(writing6)
+      setTimeout(() => { unprint(writing6) }, 1800);
+      setTimeout(() => { print(chatDate) }, 2000);
+      setTimeout(() => { print(writing7) }, 2200);
+      setTimeout(() => { unprint(writing7) }, 3600);
+      setTimeout(() => { print(chatDateOne) }, 4000);
+      setTimeout(() => { inputDate.forEach(function(element) {
+        print(element);
+      }) }, 4100);
+    }
+  })
+}
+
+if (inputDate) {
+  inputDate.forEach(function(element) {
+    element.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        print(writing8);
+        setTimeout(() => { unprint(writing8) }, 1800);
+        setTimeout(() => { print(chatPhoto) }, 2000);
+        setTimeout(() => { print(writing9) }, 2200);
+        setTimeout(() => { unprint(writing9) }, 3600);
+        setTimeout(() => { print(chatPhotoOne) }, 4000);
+        setTimeout(() => { print(inputPhoto) }, 4100);
+      };
+    })
+  })
+}
+
+if (inputPhoto) {
+  inputPhoto.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      print(writing10);
+      setTimeout(() => { unprint(writing10) }, 1800);
+      setTimeout(() => { print(chatSubmit) }, 2000);
+      setTimeout(() => { print(writing11) }, 2200);
+      setTimeout(() => { unprint(writing11) }, 3600);
+      setTimeout(() => { print(chatSubmitOne) }, 4000);
+      setTimeout(() => { print(inputSubmit) }, 4100);
+    }
+  })
+}
 
 
 

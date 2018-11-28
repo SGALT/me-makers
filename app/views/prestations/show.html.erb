@@ -5,14 +5,14 @@
       <span style="text-align: center;"><img alt="" style="max-height: 80px; max-width: 80px" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
       <div class="col-6" style="margin-top: 30px">
             <address contenteditable>
-            <p>Jonathan Neal</p>
-            <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
-            <p>(800) 555-1234</p>
+            <p><strong>Nom: </strong><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></p>
+            <p><strong>Adresse: </strong><%= @prestation.project.user.address %></p>
+            <p><strong>Tél: </strong><%= @prestation.project.user.phone_number %></p>
             </address>
       </div>
       <div class="col-6" style="margin-top: 30px; text-align: right;">
             <address contenteditable>
-              <p>Votre entreprise<br>Votre nom</p>
+              <p><%= @prestation.artisan.company %><br><%= @prestation.artisan.first_name %> <%= @prestation.artisan.last_name %></p>
             </address>
       </div>
   </div>
@@ -22,15 +22,15 @@
            <table class="meta" style="margin-bottom: 30px">
               <tr>
                 <th><span contenteditable>Devis #</span></th>
-                <td><span contenteditable>101138</span></td>
+                <td><span contenteditable><%= @prestation.id %></span></td>
               </tr>
               <tr>
                 <th><span contenteditable>Date</span></th>
-                <td><span contenteditable>1 Janvier 2019</span></td>
+                <td><span contenteditable><%= @prestation.project.date %></span></td>
               </tr>
               <tr>
-                <th><span contenteditable>Prix</span></th>
-                <td><span id="prefix" contenteditable>€</span><span>600.00</span></td>
+                <th><span contenteditable>Prix Total</span></th>
+                <td><span id="prefix" contenteditable>€</span><span><%= @prestation.price %></span></td>
               </tr>
             </table>
 
@@ -39,45 +39,52 @@
                 <tr>
                   <th><span contenteditable>Item</span></th>
                   <th><span contenteditable>Description</span></th>
-                  <th><span contenteditable>Prix</span></th>
+                  <!-- <th><span contenteditable>Prix</span></th> -->
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><a class="cut">-</a><span contenteditable>Matériaux</span></td>
-                  <td><span contenteditable>Bois, fer...</span></td>
-                  <td><span data-prefix>€</span><span>600.00</span></td>
+                  <td><span contenteditable><%= @prestation.material %></span></td>
+                  <!-- <td><span contenteditable="">€</span><span></span></td> -->
                 </tr>
                 <tr>
                   <td><a class="cut">-</a><span contenteditable>Main d'oeuvre</span></td>
-                  <td><span contenteditable>Un artisan - 10h</span></td>
-                  <td><span data-prefix>€</span><span>600.00</span></td>
+                  <td><span contenteditable><%= @prestation.workforce %></span></td>
+                  <!-- <td><span data-prefix>€</span><span>600.00</span></td> -->
                 </tr>
               </tbody>
             </table>
-              <tr>
+              <!-- <tr>
                 <th><span contenteditable>Total</span></th>
                 <td><span data-prefix>€</span><span>600.00</span></td>
-              </tr>
-
+              </tr> -->
   </div>
 </div>
 
-
+  <div class="container">
+  <% if current_user.artisan %>
+    <p><br><%= link_to "Editer le devis", edit_me_artisans_prestation_path(@prestation), class: 'btn btn-warning btn-block' %>
+  <% else %>
+       <%= link_to "Valider", projects_path, class: 'btn btn-light' %>
+       <%= link_to "Rejeter", projects_path, class: 'btn btn-light' %>
+    </p>
+  <% end %>
+  </div>
 
 <!-- Sylvain -->
 
-<div class="container">
+<!-- <div class="container">
   <h1 class="top-title">Votre devis</h1>
 
   <div class="text-center">
     <h6>avec</h6>
-    <% if current_user.artisan %>
+    <%# if current_user.artisan %>
       <h5><%= @prestation.project.user.first_name %> <%= @prestation.project.user.last_name %></h5>
-    <% else %>
+    <%# else %>
       <h5><%= @prestation.artisan.first_name %> <%= @prestation.artisan.last_name %></h5>
       <h6><%= @prestation.artisan.specialty %></h6>
-    <% end %>
+    <%# end %>
     <br>
     <h6><strong>Titre</strong></h6>
     <p>
@@ -104,14 +111,14 @@
       <%= @prestation.price %> €
     </p>
     <br>
-    <% if current_user.artisan %>
+    <%# if current_user.artisan %>
       <p>
-        <%= link_to "Editer le devis", edit_me_artisans_prestation_path(@prestation), class: 'btn btn-light' %>
-        <%= link_to "Retour", me_artisans_prestations_path, class: 'btn btn-light' %>
-    <% else %>
-        <%= link_to "Valider", '#', class: 'btn btn-light' %>
-        <%= link_to "Rejeter", '#', class: 'btn btn-light' %>
-        <%= link_to "Retour", projects_path, class: 'btn btn-light' %>
+        <%#= link_to "Editer le devis", edit_me_artisans_prestation_path(@prestation), class: 'btn btn-light' %>
+        <%#= link_to "Retour", me_artisans_prestations_path, class: 'btn btn-light' %>
+    <%# else %>
+        <%#= link_to "Valider", '#', class: 'btn btn-light' %>
+        <%#= link_to "Rejeter", '#', class: 'btn btn-light' %>
+        <%#= link_to "Retour", projects_path, class: 'btn btn-light' %>
       </p>
     <% end %>
   </div>

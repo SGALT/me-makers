@@ -76,7 +76,9 @@
               <i class="fas fa-share float-right" style="margin-right: 10px; color: #F5A623"></i>
               <%= render 'shared/rating', artisan: artisan %>
             </div>
-            <img src="https://images.pexels.com/photos/6412/table-white-home-interior.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="..." class="img-thumbnail image-large-card">
+            <% if artisan.achievements.any? %>
+              <%= cl_image_tag artisan.achievements.first.photo, class:"img-thumbnail image-large-card" %>
+            <% end %>
         </div>
       </div>
     <% end %>

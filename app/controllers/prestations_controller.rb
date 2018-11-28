@@ -2,6 +2,12 @@ class PrestationsController < ApplicationController
   before_action :set_prestation, only: %i[show update accept decline]
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'DEVIS PDF', disposition: 'attachement'
+      end
+    end
   end
 
   def accept

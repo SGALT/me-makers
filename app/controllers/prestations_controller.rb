@@ -31,7 +31,7 @@ class PrestationsController < ApplicationController
   end
 
   def update
-    if @prestation.update(params_presta)
+    if @prestation.update(params_presta.merge(state: 'done'))
       redirect_to prestation_path(@prestation)
     else
       render :show

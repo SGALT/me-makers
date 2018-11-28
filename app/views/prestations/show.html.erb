@@ -120,55 +120,90 @@
         <%#= link_to "Rejeter", '#', class: 'btn btn-light' %>
         <%#= link_to "Retour", projects_path, class: 'btn btn-light' %>
       </p>
-    <%# end %>
-  </div> -->
-
-  <!-- Chat-room -->
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="chat-header"><h1 class="top-title" style="color: white !important">Messagerie</h1></div>
-      <div class="messages">
-        <% @prestation.messages.each do |message| %>
-          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-        <% end %>
-      </div>
-      <div class="create-message">
-        <%= simple_form_for [@prestation, Message.new ], remote: true do |f| %>
-          <%= f.input :content, label: false %>
-        <% end %>
+    <% end %>
+  </div>
+  <!-- Etat devis en cours -->
+  <% if @prestation.done? %>
+    <h3 class="text-center"><i class="fas fa-check"></i></h3>
+  <% else %>
+    <!-- Chat-room -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="chat-header"><h1 class="top-title" style="color: white !important">Messagerie</h1></div>
+        <div class="messages">
+          <% @prestation.messages.each do |message| %>
+            <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+          <% end %>
+        </div>
+        <div class="create-message">
+          <%= simple_form_for [@prestation, Message.new ], remote: true do |f| %>
+            <%= f.input :content, label: false %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-
-
-<!-- Avis -->
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
-      { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
-      connected: () => {
-        console.log("[CONNECTED]")
-      },
-      received: (data) => {
-        const messagesContainer = document.querySelector('.messages');
-        messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-        if (data.author_id == <%= current_user.id %>) {
-          document.getElementById(data.message_id).classList.add("right")
-        }
-        const input = document.querySelector('#message_content');
-        input.value = '';
+    <% content_for :after_js do %>
+      <script>
         scrollLastMessageIntoView();
-        }
-      }
-    )
-  </script>
-<% end %>
-  <% if current_user.artisan %>
-    <%= link_to "RETOUR", me_artisans_prestations_path, class: 'btn btn-warning btn-block' %>
-  <% else %>
-    <%= link_to "Retour", projects_path, class: 'btn btn-warning btn-block' %>
+        App['prestation_<%= @prestation.id %>'] = App.cable.subscriptions.create(
+          { channel: 'PrestationsChannel', prestation_id: <%= @prestation.id %> }, {
+          connected: () => {
+            console.log("[CONNECTED]")
+          },
+          received: (data) => {
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+            if (data.author_id == <%= current_user.id %>) {
+              document.getElementById(data.message_id).classList.add("right")
+            }
+            const input = document.querySelector('#message_content');
+            input.value = '';
+            scrollLastMessageIntoView();
+            }
+          }
+        )
+      </script>
+    <% end %>
+    <!-- Boutton terminé -->
+    <% if current_user.artisan == false %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#exampleModal">
+        Terminer mon projet
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Laissez votre avis sur <%= @prestation.artisan.first_name %> <%= @prestation.artisan.last_name %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <%= simple_form_for @prestation do |f| %>
+              <div class="modal-body">
+                <fieldset class="rating">
+                  <input type="radio" id="star5" name="prestation[rating]" value="5" /><label class = "full" for="star5" title="Parfait - 5 étoiles"></label>
+                  <input type="radio" id="star4" name="prestation[rating]" value="4" /><label class = "full" for="star4" title="Très bien - 4 étoiles"></label>
+                  <input type="radio" id="star3" name="prestation[rating]" value="3" /><label class = "full" for="star3" title="Moyen - 3 étoiles"></label>
+                  <input type="radio" id="star2" name="prestation[rating]" value="2" /><label class = "full" for="star2" title="Déçu - 2 étoiles"></label>
+                  <input type="radio" id="star1" name="prestation[rating]" value="1" /><label class = "full" for="star1" title="Très déçu - 1 étoile"></label>
+                </fieldset>
+                <%= f.input :review, label: false %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Annuler</button>
+                <%= f.submit "Terminer", class: "btn btn-warning btn-block", id: "sweet-alert-demo" %>
+              </div>
+            <% end %>
+            <% sleep(3) %>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

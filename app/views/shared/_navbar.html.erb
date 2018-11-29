@@ -45,7 +45,7 @@
             <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Trouve ton artisan"
+            placeholder: "Choisissez une catégorie ( ex: peintre )"
             %>
             <%= submit_tag "Rechercher", class:"btn btn-outline-secondary my-2 my-sm-0 btn-block" %>
           <% end %>
@@ -55,15 +55,6 @@
           <%= link_to 'Deconnexion', destroy_user_session_path, class:"nav-link d-inline", method: :delete %>
         </li>
       <% end %>
-        <li class="nav-item">
-          <%= link_to 'Blog', decoration_path, class:"nav-link"%>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Contact', contact_path, class:"nav-link"%>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Qui sommes-nous?', about_path, class:"nav-link"%>
-        </li>
     </ul>
   </div>
 </nav>

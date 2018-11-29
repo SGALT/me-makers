@@ -1,9 +1,10 @@
+<% if @prestation.price != nil && @prestation.workforce != nil && @prestation.material != nil %>
+  <%= render "prestation_content" %>
 
-<%= render "prestation_content" %>
 
-
-<div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block' %>
-</div>
+  <div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block' %>
+  </div>
+<% end %>
 
 <div class="container">
   <% if current_user.artisan %>

@@ -36,12 +36,12 @@
   <% @projects.each do |project| %>
     <div class="row no-gutters" style="margin-bottom: 30px;">
       <div class="col-auto">
-        <%= cl_image_tag project.photo, class: "img-fluid", style: "height: 120px; width: 120px;" %>
+        <%= cl_image_tag project.photo, class: "img-fluid", style: "height: 130px; width: 130px;" %>
          <!-- <img src="//placehold.it/120" class="img-fluid" alt=""> -->
       </div>
       <div class="col" style="border-style: solid; border-width:1px; border-color: #f5a62347">
           <div class="card-block px-2">
-            <h5 class="card-title"><%= link_to project.title, project_path(project),{:style=>'color:#F5A623'} %></h5>
+            <h5 class="card-title" style="margin-top: 10px"><%= link_to project.title, project_path(project),{:style=>'color:#F5A623'} %></h5>
                 <p style="color: #535D7E"><%= project.description %></p>
               <p class="card-text" style="font-size: 10px; color: #535D7E"><%= project.date %></p>
           </div>

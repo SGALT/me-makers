@@ -109,7 +109,7 @@ if (inputDate) {
 }
 
 if (inputPhoto) {
-  inputPhoto.addEventListener('input', (event) => {
+  inputPhoto.addEventListener('change', (event) => {
       print(writing10);
       setTimeout(() => { unprint(writing10) }, 1800);
       setTimeout(() => { print(chatSubmit) }, 2000);

@@ -22,7 +22,7 @@
       <div class="col-sm-12">
         <div class="chat-header"><h1 class="text-center">Messagerie</h1></div>
         <div class="messages">
-          <% @prestation.messages.each do |message| %>
+          <% @prestation.messages.reverse_each do |message| %>
             <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
           <% end %>
         </div>
@@ -101,7 +101,7 @@
     <% content_for :after_js do %>
       <script>
         swal({
-          title: "Félicitation",
+          title: "Félicitations !!",
           text: "Votre projet est terminé",
           icon: "success",
           buttons: false,

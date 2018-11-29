@@ -12,7 +12,7 @@
   <%= text_field_tag :query,
   params[:query],
   class: "form-control",
-  placeholder: "Trouve ton artisan"
+  placeholder: "Choisissez une catégorie ( ex: peintre )"
   %>
   <%= submit_tag "Rechercher", class:"btn btn-outline-dark my-2 my-sm-0 btn-block" %>
 <% end %>
@@ -85,6 +85,12 @@
     <% end %>
   <% end %>
 </div>
-
+<div class="footer footer-expand-lg footer-light bg-light Regular shadow" style="background: linear-gradient(-180deg, #FAD961 0%, #F5A623 100%);">
+  <nav class="footer">
+    <a><%= link_to 'Blog', decoration_path, class:"nav-link"%></a>
+    <a><%= link_to 'Contact', contact_path, class:"nav-link"%></a>
+    <a><%= link_to 'Qui sommes-nous?', about_path, class:"nav-link"%></a>
+  </nav>
+</div>
 
 

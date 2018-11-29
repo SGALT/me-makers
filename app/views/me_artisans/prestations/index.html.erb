@@ -6,7 +6,7 @@
       <img src="https://www.edx.org/sites/default/files/course/image/featured-card/business-immersion-illustration_318x210.jpg">
   </div>
 
-    <% @prestations.each do |prestation| %>
+<!--     <% @prestations.each do |prestation| %>
 
       <div class="card" style="margin-bottom: 30px">
         <div class="card-body" style="color: #545d7e; text-shadow:none">
@@ -24,7 +24,30 @@
             </div>
         </div>
       </div>
-    <% end %>
+    <% end %> -->
+
+
+<% @prestations.each do |prestation| %>
+    <div class="row no-gutters" style="margin-bottom: 30px;">
+      <div class="col-auto">
+        <%= cl_image_tag prestation.project.photo, class: "img-fluid", style: "height: 120px; width: 120px;" %>
+         <!-- <img src="//placehold.it/120" class="img-fluid" alt=""> -->
+      </div>
+      <div class="col" style="border-style: solid; border-width:1px; border-color: #f5a62347">
+          <div class="card-block px-2" style="padding-top: 10px;">
+            <h5 class="card-title"><%= link_to prestation.title, prestation_path(prestation), {:style=>'color:#F5A623',}%></h5>
+                <p style="color: #535D7E"><%= prestation.description %></p>
+          </div>
+      </div>
+      <div class="col-1" style="background-color: #F5A623; text-align: center; padding-top: 80px">
+        <%= link_to prestation_path(prestation) do %>
+        <i class="fas fa-edit" style="color: white; padding-bottom: 10px"></i>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+
+
 </div>
 
 

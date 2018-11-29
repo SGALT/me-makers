@@ -8,14 +8,20 @@
 <!-- carousel -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-      <div class="carousel-item active">
+    <div class="carousel-item active">
+      <% if @artisan.achievements.any? %>
         <%= cl_image_tag @artisan.achievements.first.photo, class: "d-block w-100 rounded", style: "max-height: 194px; object-fit: cover", alt: "First slide" %>
-      </div>
-    <div class="carousel-item">
-      <%= cl_image_tag @artisan.achievements.second.photo, class: "d-block w-100 rounded", style: "max-height: 194px; object-fit: cover", alt: "Second slide" %>
+      <% end %>
     </div>
     <div class="carousel-item">
-      <%= cl_image_tag @artisan.achievements.last.photo, class: "d-block w-100 rounded", style: "max-height: 194px; object-fit: cover", alt: "Third slide" %>
+      <% if @artisan.achievements.any? %>
+        <%= cl_image_tag @artisan.achievements.second.photo, class: "d-block w-100 rounded", style: "max-height: 194px; object-fit: cover", alt: "Second slide" %>
+      <% end %>
+    </div>
+    <div class="carousel-item">
+      <% if @artisan.achievements.any? %>
+        <%= cl_image_tag @artisan.achievements.last.photo, class: "d-block w-100 rounded", style: "max-height: 194px; object-fit: cover", alt: "Third slide" %>
+      <% end %>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

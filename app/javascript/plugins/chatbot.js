@@ -50,6 +50,7 @@ function unprint(element) {
 
 if (init) {
   init.addEventListener('click', (event) => {
+    unprint(init);
     print(writing1);
     setTimeout(() => { unprint(writing1) }, 1500);
     setTimeout(() => { print(intro) }, 2000);
@@ -95,8 +96,7 @@ if (inputDescription) {
 
 if (inputDate) {
   inputDate.forEach(function(element) {
-    element.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter') {
+    element.addEventListener('input', (event) => {
         print(writing8);
         setTimeout(() => { unprint(writing8) }, 1800);
         setTimeout(() => { print(chatPhoto) }, 2000);
@@ -104,14 +104,12 @@ if (inputDate) {
         setTimeout(() => { unprint(writing9) }, 3600);
         setTimeout(() => { print(chatPhotoOne) }, 4000);
         setTimeout(() => { print(inputPhoto) }, 4100);
-      };
     })
   })
 }
 
 if (inputPhoto) {
-  inputPhoto.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
+  inputPhoto.addEventListener('input', (event) => {
       print(writing10);
       setTimeout(() => { unprint(writing10) }, 1800);
       setTimeout(() => { print(chatSubmit) }, 2000);
@@ -119,7 +117,6 @@ if (inputPhoto) {
       setTimeout(() => { unprint(writing11) }, 3600);
       setTimeout(() => { print(chatSubmitOne) }, 4000);
       setTimeout(() => { print(inputSubmit) }, 4100);
-    }
   })
 }
 

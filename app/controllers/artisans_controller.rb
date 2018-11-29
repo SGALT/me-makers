@@ -19,8 +19,8 @@ class ArtisansController < ApplicationController
         }]
     else
       @markers = [{
-          lng: 2.2945,
-          lat: 48.8582,
+          lng: -0.5720551,
+          lat: 44.841312,
           infoWindow: { content: render_to_string(partial: "/artisans/map_window", locals: { artisan: @artisan }) }
         }]
     end

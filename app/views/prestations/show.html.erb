@@ -2,7 +2,7 @@
   <%= render "prestation_content" %>
 
 
-  <div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block' %>
+  <div class="container"><br><%= link_to "Télécharger le Devis", prestation_path(@prestation, format: :pdf), class: 'btn btn-warning btn-block', target: "_blank" %>
   </div>
 <% end %>
 
@@ -72,6 +72,9 @@
       </div>
     <% end %>
   <% end %>
+  <br>
+  <!-- bouton retour -->
+  <%= link_to "Retour", project_path(@prestation.project_id), class: "btn btn-light btn-block" %>
 
   <% content_for :after_js do %>
     <script>

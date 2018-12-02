@@ -35,7 +35,7 @@
     </div>
     <br>
   <!-- Boutton terminer -->
-    <% if current_user.artisan == false %>
+    <% if current_user.artisan == false && @prestation.booked? %>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#exampleModal">
         Terminer mon projet
